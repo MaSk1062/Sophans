@@ -1,0 +1,19 @@
+{% extends 'mapalo/auth/auth_base.html' %}
+{% block head_title %}
+	Blacklist Edit
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <div style="width: 100%; max-width: 100%; padding: 2rem; margin-top: 1rem; margin-bottom: 1rem;">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <legend>Update Blacklist</legend>
+                    {{form|crispy}}
+                    <button style="border: none; border-radius: 7px; color: aliceblue; font-size: 20px; background-color:black; text-align: center" type="submit">Submit</button>
+                </form>
+            </div>
+        </div> 
+    </div>
+{% endblock content %}

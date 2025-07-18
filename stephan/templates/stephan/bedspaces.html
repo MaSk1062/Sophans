@@ -1,0 +1,120 @@
+{% extends 'stephan/index.html'%}
+{% load widget_tweaks %}
+{% block head_title %}
+	Bed Spaces
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+    <h1 style="color: indigo; text-align: center;">{{ request.user.tenantprofile.business}} Spaces </h1>
+    {% if request.user.tenantprofile.has_paid %}
+        <div style="display: flex; align-items: center; justify-content: space-evenly; width: 100%; height: 100px; border-radius: 7px">
+            <div style="background-color: lightslategrey; width: 20%; height: 100px; border-radius: 10px">
+                <h3 style="text-align: center; color: indigo;">Create Spaces</h3>
+                <h1 style="text-align: center;"><button hx-get="{% url 'bedspace-create'%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true" class="btn btn-outline-dark">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                </svg>
+                </button></h1>
+            </div>
+            
+
+            <div style="background-color: lavender; width: 20%; height: 100px; border-radius: 10px">
+                <h3 style="text-align: center; color: indigo;">Male Spaces</h3>
+                <h1 style="text-align: center; color: indigo;">{{ males }}</h1>
+            </div>
+            <div style="background-color: lavender; width: 20%; height: 100px; border-radius: 10px">
+                <h3 style="text-align: center; color: indigo;">Female Spaces</h3>
+                <h1 style="text-align: center; color: indigo;">{{ females }}</h1>
+            </div>
+        </div>
+    {% endif %}
+  <hr>
+  <br>
+  {% if space_page %}
+      <div>
+          <form action="" method="get" style="color: indigo;">
+              <div style="display: flex; align-items: center; justify-content: space-evenly; color: indigo;">
+                  <div>
+                      {% render_field spaces.form.name type="input" placeholder="Name" class="form-control" %}
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: center">
+                      {{ spaces.form.sex|add_label_class:"form-label" }}&nbsp;
+                      {% render_field spaces.form.sex type="select"  class="form-select" %}
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: center">
+                      {{ spaces.form.bedroom|add_label_class:"form-label" }}&nbsp;
+                      {% render_field spaces.form.bedroom type="select"  class="form-select" %}
+                  </div>
+                <button style="border-radius: 10px;" type="submit" class="btn btn-outline-secondary">Search</button>
+              </div>
+          </form>
+      </div>
+      <br>
+
+
+      <div style="width: 100%; height: auto; display: flex">
+        <div style="width: 100%; height: auto; margin-right: 5px">
+        <table class="table table-borderless table-hover table-secondary">
+        <thead>
+        <tr>
+            <th style="color: indigo;" scope="col">#</th>
+            <th style="color: indigo;" scope="col">name</th>
+            <th style="color: indigo;" scope="col">Bedroom</th>
+            <th style="color: indigo;" scope="col">Sex</th>
+            <th style="color: indigo;" scope="col">View</th>
+        </tr>
+        </thead>
+            <tbody class="table-group-divider">
+                {% for space in space_page %}
+                    {% if space.occupied %}
+                        <tr>
+                            <th style="color: red;" scope="row">{{forloop.counter}}</th>
+                            <td style="color: red;" >{{space.name}}</td>
+                            <td style="color: red;" >{{space.bedroom.name}}</td>
+                            <td style="color: red;" >{{space.bedroom.sex}}</td>
+                            {% if request.user.tenantprofile.has_paid %}
+                                <td><button style="border: none; border-radius: 7px; color: red" hx-get="{% url 'bedspace-detail' space.id %}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+                            {% else %}
+                                <td><button style="border: none; border-radius: 7px; color: red">Subscribe</button></td>
+                            {% endif %}
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <th style="color: indigo;" scope="row">{{forloop.counter}}</th>
+                            <td style="color: indigo;" >{{space.name}}</td>
+                            <td style="color: indigo;" >{{space.bedroom.name}}</td>
+                            <td style="color: indigo;" >{{space.bedroom.sex}}</td>
+                            {% if request.user.tenantprofile.has_paid %}
+                            <td><button style="border: none; border-radius: 7px; color: indigo" hx-get="{% url 'bedspace-detail' space.id %}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+                            {% else %}
+                                <td><button style="border: none; border-radius: 7px; color: indigo">Subscribe</button></td>
+                            {% endif %}
+                            
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+    </table>
+        {% if space_page.has_previous %}
+          <a class="btn btn-outline-secondary mb-4" href="?page=1">First</a>&nbsp;
+        {% endif %}
+        {% for num in space_page.paginator.page_range %}
+            {% if space_page.number == num %}
+                <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>&nbsp;
+            {% elif num > space_page.number|add:'-3' and num < space_page.number|add:'3' %}
+                <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>&nbsp;
+            {% endif %}
+        {% endfor %}
+      </div>
+      </div>
+    {% else %}
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <h3 style="margin-right: 20px;">No Bedspaces Created</h3>
+        <a href="{% url 'bedspace-create'%}" type="button" class="btn btn-secondary">Create Space</a>
+    </div>
+    
+  {% endif %}
+</div>
+
+{% endblock content %}

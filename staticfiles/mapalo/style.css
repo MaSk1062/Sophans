@@ -1,0 +1,84 @@
+
+.home-home {
+    margin-bottom: 10px;
+}
+
+.home-img {
+    background-image: url("./images/new\ home.png");
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    background-size: cover;
+    border-radius: 7px
+}
+
+.nvlink {
+    margin-right: 10px; 
+    border: 2px rgb(81, 58, 97) solid; 
+    border-radius: 10px;
+    margin-top: 20px;
+    border: none;
+    color: indigo;
+}
+
+
+.pnvlink {
+    margin-top: 20px;
+    color: indigo;
+}
+
+.pnvlink:hover {
+    text-decoration: 2px underline;
+    color: indigo;
+}
+
+.nvlink:hover {
+    background-color: indigo;
+    color: white;
+}
+
+.nvlinklogout { 
+    border: 2px rgb(243, 179, 184) solid; 
+    border-radius: 10px;
+    margin-right: 5px;
+    margin-top: 20px;
+    border: none;
+    color: indigo;
+}
+
+.nvlinklogout:hover {
+    background-color: rgb(243, 179, 184);
+}
+
+
+#pricing {
+    color: indigo;
+    text-align: center;
+}
+
+.get-started-link {
+    color: indigo;
+    font-size: 30px;
+    border: 1px indigo solid;
+    padding: 8px;
+    border-radius: 15px;
+    padding-right: 10px;
+}
+
+.get-started-link:hover {
+    color: whitesmoke;
+    background-color: indigo;
+    transition: .2s ease-out;
+}
+
+
+.manage-pic {
+    background-image: url("./images/message_back.png");
+    width: 700px;
+    max-width: 100%;
+    min-height: 457px;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-right: 10px;
+}

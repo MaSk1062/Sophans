@@ -1,0 +1,16 @@
+{
+  "name": "mask",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "mask",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "clean-css": "^5.3.3"
+  }
+}

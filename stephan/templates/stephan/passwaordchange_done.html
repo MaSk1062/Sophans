@@ -1,0 +1,12 @@
+{% extends 'stephan/base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+    MSNT Password Change Done
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h5>Password Change Successful</h5>
+    <a href="{% url 'home' %}" class="pro-edit-button">Return Home</a>
+</div>
+
+{% endblock content %}

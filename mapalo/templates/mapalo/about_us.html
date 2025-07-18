@@ -1,0 +1,105 @@
+{% extends 'mapalo/base.html' %}
+{% block head_title %}
+	About sophans
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div style="display: flex; align-items: center; justify-content: center; color: indigo; border-bottom: 1px solid indigo; border-radius: 10px; margin-bottom: 30px;">
+        <h1 class="aboutus_title">Sophans</h1>
+    </div>
+    <section>
+        <p style="color: indigo; font-size: 30px;">Who We Are</p>
+        <p>
+            <strong style="color: indigo;">Sophans</strong> is the ultimate solution for all kinds landlords.
+            Our mission is to simplify rental management, making it easier for landlords to manage tenants
+            and for tenants to enjoy a smooth rental experience.
+        </p>
+    </section>
+
+    <section>
+        <p style="color: indigo; font-size: 30px;">What We Do</p>
+        <p>This is a platform that:</p>
+        <ul style="list-style-type: none">
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+              </svg> Help different landlords efficiently, easily manage tenants.</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+              </svg> Provide a seamless platform for tenants to track rental payments and due dates.</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+              </svg> Automate notifications for rent reminders via email and SMS(coming soon).</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+              </svg> Issue payment receipts</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+              </svg> Ensure user data privacy and security at all levels.</li>
+            <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash-lg" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 8a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 2 8"/>
+              </svg> Help you with unncessary costs.</li>
+        </ul>
+    </section>
+
+    <section>
+        <p style="color: indigo; font-size: 30px;">Why Choose Us?</p>
+        <span>
+            With <strong style="color: indigo;">Sophans</strong>, you can say goodbye to the hassle of traditional rental management.
+            Our platform is built with modern technology to ensure efficiency, security, and ease of use.
+        </span>
+    </section>
+    <section>
+        <p style="color: indigo; font-size: 30px;">Contact Us</p>
+        <p style="color: indigo;">Email: Sophans.msn@gmail.com</p>
+        <p style="color: indigo;">Airtel: +260776514959</p>
+        <p style="color: indigo;">Zamtel: +260954234882</p>
+    </section>
+
+
+    <!-- Feedback Section -->
+    <hr>
+    <section>
+        <p>We Value Your Feedback</p>
+        <span>Let us know how we can improve! Your feedback helps us make the platform better.</span>
+        <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center; margin: 10px">
+            <div style="background-color: whitesmoke; padding: 10px; width: 500px; max-width: 100%; border-radius: 10px">
+               <form method="POST" action="{% url 'feedback' %}">
+                   {% csrf_token %}
+                   <div input-group flex-nowrap>
+                       <label for="name" class="form-label" style="color: indigo;">Name:</label>
+                       <input type="text" class="form-control" id="name" name="name" required>
+                   </div>
+                   <div input-group flex-nowrap>
+                       <label for="email" class="form-label" style="color: indigo;">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                   </div>
+                   <div input-group flex-nowrap>
+                       <label for="message" class="form-label" style="color: indigo;">Your Feedback:</label>
+                       <textarea id="message" class="form-control" name="message" required></textarea>
+                   </div>
+                    <button style="margin-top: 5px" type="submit" class="btn btn-outline-success">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            fetch("{% url 'feedback' %}", {
+                method: "POST",
+                body: new FormData(this),
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Thank you for your feedback!");
+                this.reset();
+            })
+            .catch(error => alert("An error occurred. Please try again."));
+        });
+    </script>
+
+{% endblock content %}

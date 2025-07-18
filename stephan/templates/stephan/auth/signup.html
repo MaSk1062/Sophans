@@ -1,0 +1,22 @@
+{% extends 'stephan/base.html' %}
+{% block head_title %}
+    Sophans Credentials
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container mt-5">
+        <h2 style="text-align: center; color: indigo;">Enter Your Sophans Credentials</h2>
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <div style="width: 100%; max-width: 100%; padding: 2rem; margin-top: 1rem; margin-bottom: 1rem;">
+                <form method="post" action="{% url 'tenant-signup'%}">
+                    {% csrf_token %}
+                    {{form|crispy}}
+                    <button style="border: none; border-radius: 7px; color: purple; font-size: 20px; background-color: rgba(128,0,128,0.18); text-align: center" type="submit">Enter</button>
+                </form>
+                <p class="text-center" style="margin-top: 15px">
+                    Already Have an Account? <a style="color: darkcyan" href="{% url 'tenant-login' %}">Login</a>
+                </p>
+            </div>
+        </div> 
+    </div>
+{% endblock content %}

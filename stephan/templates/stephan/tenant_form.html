@@ -1,0 +1,112 @@
+{% extends 'stephan/base.html'%}
+{% load widget_tweaks %}
+{% block head_title %}
+	Tenant Create
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container-fluid">
+        <div style="width: 100%;">
+            <div style="width: 100%; max-width: 100%; height: auto; margin-top: 3rem; margin-bottom: 3rem; background-color: rgba(245, 245, 245, 0.5); border-radius: 7px; padding: 5px; padding-left: 10px;">
+                <form method="post" enctype="multipart/form-data" class="row g-3">
+                    {% csrf_token %}
+                    <legend style="color: indigo;">Add Tenant</legend>
+                    <div class="row g-3">
+                        <div class="col" style="color: indigo;">
+                            {{ form.bedroom|add_label_class:"form-label" }}
+                            {% render_field form.bedroom class="form-select" %}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.bedspace|add_label_class:"form-label" }}
+                            {% render_field form.bedspace class="form-select" %}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.sex|add_label_class:"form-label" }}
+                            {% render_field form.sex class="form-select" %}
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col" style="color: indigo;">
+                            {{ form.name|add_label_class:"form-label" }}
+                            {% render_field form.name class="form-control" %}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.email|add_label_class:"form-label" }}
+                            {% render_field form.email class="form-control"%}
+                            {{ form.email.errors }}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.contact|add_label_class:"form-label" }}
+                            {% render_field form.contact class="form-control"%}
+                            {{ form.contact.errors }}
+                        </div>
+                    </div>
+                    
+                    <div class="row g-3">
+                        <div class="col" style="color: indigo;">
+                            {{ form.picture|add_label_class:"form-label" }}
+                            {% render_field form.picture class="form-control" %}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.nrc_number|add_label_class:"form-label" }}
+                            {% render_field form.nrc_number class="form-control" %}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.location|add_label_class:"form-label" }}
+                            {% render_field form.location class="form-control" %}
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col" style="color: indigo;">
+                            {% render_field form.guardians_name class="form-control" %}
+                        </div>
+                    </div>
+
+                    <div class="row g-3">
+                        <div class="col" style="color: indigo;">
+                            {% render_field form.guardians_contact class="form-control" %}
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row g-3">
+                        <div class="col" style="color: indigo;">
+                            {{ form.school|add_label_class:"form-label" }}
+                            {% render_field form.school class="form-control" %}
+                        </div>
+                        <div class="col" style="color: indigo;">
+                            {{ form.amount|add_label_class:"form-label" }}
+                            {% render_field form.amount class="form-control" %}
+                        </div>
+                    </div>
+
+                    <div class="col-2" style="color: indigo;">
+                        {{ form.due|add_label_class:"form-label" }}
+                        {% render_field form.due class="form-control" %}
+                    </div>
+                    <div class="col-12">
+                        <div class="form-check" style="color: indigo;">
+                            {{ form.paid|add_label_class:"form-check-label"}}
+                            {% render_field form.paid type="checkbox" class="form-check-input"%}
+                        </div>
+                        <div class="form-check" style="color: indigo;">
+                            {{ form.boarded|add_label_class:"form-check-label"}}
+                            {% render_field form.boarded type="checkbox" class="form-check-input"%}
+                        </div>
+                      </div>
+                    
+                    <div class="col-12">
+                        <a style="color: maroon;" href="#"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+                          </svg></a>
+                        
+                        <button style="margin-right: 5px;" type="submit" id="tenant-create-btn" class=" float-end">Add</button>
+                    </div>
+                </form>
+            </div>
+        </div> 
+    </div>
+{% endblock content %}
+

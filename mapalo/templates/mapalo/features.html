@@ -1,0 +1,137 @@
+{% extends 'mapalo/base.html'%}
+{% load static %}
+{% block head_title %}
+    MSNT
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div style="width: 100%; height: 500px; text-align: center; background-color: indigo; display: flex;
+        align-items: center; justify-content: center; color: whitesmoke; border-radius: 10px; margin-bottom: 50px;">
+            <div>
+                <H1 style="margin-bottom: 10px; font-size: 50px;">Sophans Features</H1>
+                <p style="font-size: 25px; margin-bottom: 20px;">Sophans Featues Makes it easy to Manage your Boarding House, Hotel, Lodge etc. <br> 
+                    Say goodbye to manual management of Tenants</p>
+                <h3>"Let Sophans Manage Your Tenants"</h3>
+            </div>
+            
+        </div>
+        <div style="display: flex; align-items: center; justify-content: space-evenly; width: 100%; height: 300px;">
+            <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                <span class="feature-btn" style="width: 100%;">Manage <br> Tenants</span>
+            </div>
+            <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                <span class="feature-btn" style="width: 100%;">Automatic <br>Reminders</span>
+            </div>
+            <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                <span class="feature-btn" style="width: 100%;">Organise <br> Rooms/Spaces</span>
+            </div>
+            <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                <span class="feature-btn" style="width: 100%;">Monitor <br> Payments</span>
+            </div>
+            <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                <span class="feature-btn" style="width: 100%;">Blacklist <br> Tenants</span>
+            </div>
+        </div>
+        <!-- Features Info -->
+        <div style="width: 100%; height: auto;">
+            <div style="width: 100%; min-height: 550px; max-height: 900px; border-radius: 10px; margin-bottom: 30px;">
+                <h1 style="text-align: center; color: indigo; margin-bottom: 30px;">Management</h1>
+                <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                    <div class="manage-pic"> 
+                    </div>
+                    <div style="width: 500px; max-width: 100%; height: 457px;">
+                        <ul style="font-size: 25px; padding: 20px;">
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Sophans takes the hassle of always adding the<br>&nbsp;&nbsp;same tenant over and over whenever they pay.</li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Know exactly who has paid and who has not.</li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Send messages/reminders to all tenants at once.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; min-height: 550px; max-height: 900px; border-radius: 10px; margin-bottom: 30px;">
+                <h1 style="text-align: center; color: indigo; margin-bottom: 30px; border-top: 2px solid indigo; border-radius: 10px">Automatic Reminders</h1>
+                <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                    <div class="manage-pic">
+                    </div>
+                    <div style="width: 500px; max-width: 100%; height: 457px;">
+                        <ul style="font-size: 25px; padding: 20px;">
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Sophans Sends Automatic welcome messages to<br>&nbsp;&nbsp;new tenants.</li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Payment due reminders are handled by Sophans.</li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Sophans also sends thank you messages to<br>&nbsp;&nbsp;tenants for paying rentors (just to be nice)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; min-height: 550px; max-height: 900px; border-radius: 10px; margin-bottom: 30px;">
+                <h1 style="text-align: center; color: indigo; margin-bottom: 30px; border-top: 2px solid indigo; border-radius: 10px">Rooms/Spaces Organization</h1>
+                <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                    <div class="manage-pic">
+                    </div>
+                    <div style="width: 500px; max-width: 100%;height: 457px;">
+                        <ul style="font-size: 25px; padding: 20px;">
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Keep track of which tenants are exactly in which<br>&nbsp;&nbsp;room</li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>See which rooms/spaces are for men or women</li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Monitor which rooms or space are occupied or<br>&nbsp;&nbsp;available from one place.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; min-height: 550px; max-height: 900px;  border-radius: 10px; margin-bottom: 30px;">
+                <h1 style="text-align: center; color: indigo; margin-bottom: 30px; border-top: 2px solid indigo; border-radius: 10px">Payment Monitoring</h1>
+                <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                    <div class="manage-pic">
+                    </div>
+                    <div style="width: 500px; max-width: 100%;height: 457px;">
+                        <ul style="font-size: 25px; padding: 20px;">
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Monitor tenant payments from one place.
+                            </li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Dedicated payments view for each tenant.
+                            </li>
+                            <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                              </svg>Observe the number of payments each tenant<br>&nbsp;&nbsp;has made.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; height: 550px; border-radius: 10px; margin-bottom: 30px;">
+                <div style="display: flex; ">
+                    <div style="width: 100%;">
+                        <h1 style="text-align: center; color: indigo;">Tenant Blacklisting</h1>
+                        <ul style="font-size: 25px; padding: 20px; text-align: center;">
+                            <li class="feature-list">
+                                Sophans gives you the abiiity to blacklist misbehaving tenants and alert other Sophans landlords
+                            </li>
+                        </ul>
+                        <p style="text-align: center; color: indigo; font-size: 20px;">*Disclaimer: Sophans will not be held accountable in any legal issue. <br>
+                        landlords must have proof of any kind of misbehaving before blacklisting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

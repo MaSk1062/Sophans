@@ -1,0 +1,526 @@
+{
+    "id": "PROD-10548499919623941",
+    "name": "Sophans Management Service",
+    "description": "Tenant Management Platform",
+    "type": "SERVICE",
+    "category": "SOFTWARE",
+    "image_url": "https://sophans.com/sophans.PNG",
+    "home_url": "https://sophans.com/sophans",
+    "create_time": "2025-04-25T22:24:39Z",
+    "update_time": "2025-04-25T22:24:39Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/catalogs/products/PROD-10548499919623941",
+            "rel": "self",
+            "method": "GET"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/catalogs/products/PROD-10548499919623941",
+            "rel": "edit",
+            "method": "PATCH"
+        }
+    ]
+}
+
+
+{
+    "id": "P-4R35066858827741KNAGBG2Q",
+    "product_id": "PROD-10548499919623941",
+    "name": "Sophans Monthly Plan",
+    "status": "ACTIVE",
+    "description": "Sophans basic plan",
+    "usage_type": "LICENSED",
+    "billing_cycles": [
+        {
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 1
+            },
+            "tenure_type": "TRIAL",
+            "sequence": 1,
+            "total_cycles": 1
+        },
+        {
+            "pricing_scheme": {
+                "version": 1,
+                "fixed_price": {
+                    "currency_code": "USD",
+                    "value": "17.91"
+                },
+                "create_time": "2025-04-25T22:57:46Z",
+                "update_time": "2025-04-25T22:57:46Z"
+            },
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 1
+            },
+            "tenure_type": "REGULAR",
+            "sequence": 2,
+            "total_cycles": 1
+        }
+    ],
+    "payment_preferences": {
+        "service_type": "PREPAID",
+        "auto_bill_outstanding": true,
+        "setup_fee": {
+            "currency_code": "USD",
+            "value": "0.0"
+        },
+        "setup_fee_failure_action": "CANCEL",
+        "payment_failure_threshold": 3
+    },
+    "quantity_supported": false,
+    "create_time": "2025-04-25T22:57:46Z",
+    "update_time": "2025-04-25T22:57:46Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-4R35066858827741KNAGBG2Q",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-4R35066858827741KNAGBG2Q",
+            "rel": "edit",
+            "method": "PATCH",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-4R35066858827741KNAGBG2Q/deactivate",
+            "rel": "self",
+            "method": "POST",
+            "encType": "application/json"
+        }
+    ]
+}
+
+#five months
+{
+    "id": "P-7BT04552UT635370SNAGBNBA",
+    "product_id": "PROD-10548499919623941",
+    "name": "Sophans Five Months Plan",
+    "status": "ACTIVE",
+    "description": "Sophans Five Months plan",
+    "usage_type": "LICENSED",
+    "billing_cycles": [
+        {
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 1
+            },
+            "tenure_type": "TRIAL",
+            "sequence": 1,
+            "total_cycles": 1
+        },
+        {
+            "pricing_scheme": {
+                "version": 1,
+                "fixed_price": {
+                    "currency_code": "USD",
+                    "value": "71.27"
+                },
+                "create_time": "2025-04-25T23:11:00Z",
+                "update_time": "2025-04-25T23:11:00Z"
+            },
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 5
+            },
+            "tenure_type": "REGULAR",
+            "sequence": 2,
+            "total_cycles": 1
+        }
+    ],
+    "payment_preferences": {
+        "service_type": "PREPAID",
+        "auto_bill_outstanding": true,
+        "setup_fee": {
+            "currency_code": "USD",
+            "value": "0.0"
+        },
+        "setup_fee_failure_action": "CANCEL",
+        "payment_failure_threshold": 3
+    },
+    "quantity_supported": false,
+    "create_time": "2025-04-25T23:11:00Z",
+    "update_time": "2025-04-25T23:11:00Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-7BT04552UT635370SNAGBNBA",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-7BT04552UT635370SNAGBNBA",
+            "rel": "edit",
+            "method": "PATCH",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-7BT04552UT635370SNAGBNBA/deactivate",
+            "rel": "self",
+            "method": "POST",
+            "encType": "application/json"
+        }
+    ]
+}
+
+#yearly plan
+{
+    "id": "P-95D55192P9854283CNAGBPMI",
+    "product_id": "PROD-10548499919623941",
+    "name": "Sophans Annual Plan",
+    "status": "ACTIVE",
+    "description": "Sophans Yearly plan",
+    "usage_type": "LICENSED",
+    "billing_cycles": [
+        {
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 1
+            },
+            "tenure_type": "TRIAL",
+            "sequence": 1,
+            "total_cycles": 1
+        },
+        {
+            "pricing_scheme": {
+                "version": 1,
+                "fixed_price": {
+                    "currency_code": "USD",
+                    "value": "127.13"
+                },
+                "create_time": "2025-04-25T23:16:01Z",
+                "update_time": "2025-04-25T23:16:01Z"
+            },
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 12
+            },
+            "tenure_type": "REGULAR",
+            "sequence": 2,
+            "total_cycles": 1
+        }
+    ],
+    "payment_preferences": {
+        "service_type": "PREPAID",
+        "auto_bill_outstanding": true,
+        "setup_fee": {
+            "currency_code": "USD",
+            "value": "0.0"
+        },
+        "setup_fee_failure_action": "CANCEL",
+        "payment_failure_threshold": 3
+    },
+    "quantity_supported": false,
+    "create_time": "2025-04-25T23:16:01Z",
+    "update_time": "2025-04-25T23:16:01Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-95D55192P9854283CNAGBPMI",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-95D55192P9854283CNAGBPMI",
+            "rel": "edit",
+            "method": "PATCH",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-95D55192P9854283CNAGBPMI/deactivate",
+            "rel": "self",
+            "method": "POST",
+            "encType": "application/json"
+        }
+    ]
+}
+
+
+
+original plans
+{
+    "id": "P-12794774VS361393VNAGURBQ",
+    "product_id": "PROD-10548499919623941",
+    "name": "Monthly Plan",
+    "status": "ACTIVE",
+    "description": "Sophans Monthly plan",
+    "usage_type": "LICENSED",
+    "billing_cycles": [
+        {
+            "pricing_scheme": {
+                "version": 1,
+                "fixed_price": {
+                    "currency_code": "USD",
+                    "value": "17.91"
+                },
+                "create_time": "2025-04-26T20:56:38Z",
+                "update_time": "2025-04-26T20:56:38Z"
+            },
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 1
+            },
+            "tenure_type": "REGULAR",
+            "sequence": 1,
+            "total_cycles": 1
+        }
+    ],
+    "payment_preferences": {
+        "service_type": "PREPAID",
+        "auto_bill_outstanding": true,
+        "setup_fee": {
+            "currency_code": "USD",
+            "value": "0.0"
+        },
+        "setup_fee_failure_action": "CANCEL",
+        "payment_failure_threshold": 3
+    },
+    "quantity_supported": false,
+    "create_time": "2025-04-26T20:56:38Z",
+    "update_time": "2025-04-26T20:56:38Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-12794774VS361393VNAGURBQ",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-12794774VS361393VNAGURBQ",
+            "rel": "edit",
+            "method": "PATCH",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-12794774VS361393VNAGURBQ/deactivate",
+            "rel": "self",
+            "method": "POST",
+            "encType": "application/json"
+        }
+    ]
+}
+
+five months
+{
+    "id": "P-6TH570075T6714226NAGUY7Y",
+    "product_id": "PROD-10548499919623941",
+    "name": "Five Months Plan",
+    "status": "ACTIVE",
+    "description": "Five Months plan",
+    "usage_type": "LICENSED",
+    "billing_cycles": [
+        {
+            "pricing_scheme": {
+                "version": 1,
+                "fixed_price": {
+                    "currency_code": "USD",
+                    "value": "71.27"
+                },
+                "create_time": "2025-04-26T21:13:35Z",
+                "update_time": "2025-04-26T21:13:35Z"
+            },
+            "frequency": {
+                "interval_unit": "MONTH",
+                "interval_count": 5
+            },
+            "tenure_type": "REGULAR",
+            "sequence": 1,
+            "total_cycles": 1
+        }
+    ],
+    "payment_preferences": {
+        "service_type": "PREPAID",
+        "auto_bill_outstanding": true,
+        "setup_fee": {
+            "currency_code": "USD",
+            "value": "0.0"
+        },
+        "setup_fee_failure_action": "CANCEL",
+        "payment_failure_threshold": 3
+    },
+    "quantity_supported": false,
+    "create_time": "2025-04-26T21:13:35Z",
+    "update_time": "2025-04-26T21:13:35Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-6TH570075T6714226NAGUY7Y",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-6TH570075T6714226NAGUY7Y",
+            "rel": "edit",
+            "method": "PATCH",
+            "encType": "application/json"
+        },
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-6TH570075T6714226NAGUY7Y/deactivate",
+            "rel": "self",
+            "method": "POST",
+            "encType": "application/json"
+        }
+    ]
+}
+yearly
+{
+    "id": "P-8CN33038UD811140GNAGUVFA",
+    "product_id": "PROD-10548499919623941",
+    "name": "Annual Plan",
+    "status": "ACTIVE",
+    "description": "Sophans Annual plan",
+    "usage_type": "LICENSED",
+    "create_time": "2025-04-26T21:05:24Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v1/billing/plans/P-8CN33038UD811140GNAGUVFA",
+            "rel": "self",
+            "method": "GET",
+            "encType": "application/json"
+        }
+    ]
+},
+
+
+
+
+
+
+
+
+
+
+{
+    "id": "WH-19973937YW279670F-02S63370HL636500Y",
+    "create_time": "2016-04-28T11:29:31Z",
+    "resource_type": "Agreement",
+    "event_type": "BILLING.SUBSCRIPTION.CREATED",
+    "summary": "A billing subscription was created",
+    "resource": {
+      "agreement_details": {
+        "outstanding_balance": {
+          "value": "0.00"
+        },
+        "num_cycles_remaining": "5",
+        "num_cycles_completed": "0",
+        "final_payment_due_date": "2017-11-30T10:00:00Z",
+        "failed_payment_count": "0"
+      },
+      "description": "desc",
+      "links": [
+        {
+          "href": "https://api.paypal.com/v1/payments/billing-agreements/I-PE7JWXKGVN0R",
+          "rel": "self",
+          "method": "GET"
+        }
+      ],
+      "id": "I-PE7JWXKGVN0R",
+      "shipping_address": {
+        "recipient_name": "Cool Buyer",
+        "line1": "3rd st",
+        "line2": "cool",
+        "city": "San Jose",
+        "state": "CA",
+        "postal_code": "95112",
+        "country_code": "US"
+      },
+      "state": "Pending",
+      "plan": {
+        "curr_code": "USD",
+        "links": [],
+        "payment_definitions": [
+          {
+            "type": "TRIAL",
+            "frequency": "Month",
+            "frequency_interval": "1",
+            "amount": {
+              "value": "5.00"
+            },
+            "cycles": "5",
+            "charge_models": [
+              {
+                "type": "TAX",
+                "amount": {
+                  "value": "1.00"
+                }
+              },
+              {
+                "type": "SHIPPING",
+                "amount": {
+                  "value": "1.00"
+                }
+              }
+            ]
+          },
+          {
+            "type": "REGULAR",
+            "frequency": "Month",
+            "frequency_interval": "1",
+            "amount": {
+              "value": "10.00"
+            },
+            "cycles": "15",
+            "charge_models": [
+              {
+                "type": "TAX",
+                "amount": {
+                  "value": "2.00"
+                }
+              },
+              {
+                "type": "SHIPPING",
+                "amount": {
+                  "value": "1.00"
+                }
+              }
+            ]
+          }
+        ],
+        "merchant_preferences": {
+          "setup_fee": {
+            "value": "0.00"
+          },
+          "auto_bill_amount": "YES",
+          "max_fail_attempts": "21"
+        }
+      },
+      "payer": {
+        "payment_method": "paypal",
+        "status": "verified",
+        "payer_info": {
+          "email": "coolbuyer@example.com",
+          "first_name": "Cool",
+          "last_name": "Buyer",
+          "payer_id": "XLHKRXRA4H7QY",
+          "shipping_address": {
+            "recipient_name": "Cool Buyer",
+            "line1": "3rd st",
+            "line2": "cool",
+            "city": "San Jose",
+            "state": "CA",
+            "postal_code": "95112",
+            "country_code": "US"
+          }
+        }
+      },
+      "start_date": "2016-04-30T07:00:00Z"
+    },
+    "links": [
+      {
+        "href": "https://api.paypal.com/v1/notifications/webhooks-events/WH-19973937YW279670F-02S63370HL636500Y",
+        "rel": "self",
+        "method": "GET",
+        "encType": "application/json"
+      },
+      {
+        "href": "https://api.paypal.com/v1/notifications/webhooks-events/WH-19973937YW279670F-02S63370HL636500Y/resend",
+        "rel": "resend",
+        "method": "POST",
+        "encType": "application/json"
+      }
+    ],
+    "event_version": "1.0"
+  }

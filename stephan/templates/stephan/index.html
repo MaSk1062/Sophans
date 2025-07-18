@@ -1,0 +1,224 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'stephan/main.css'%}">
+    <link rel="stylesheet" href="{% static 'stephan/style.css'%}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>
+        {% block head_title %}
+            Sophans
+        {% endblock %}
+    </title>
+    <style>
+        body {
+            background-color: lightgrey;
+            color: #01011e;
+            font-family: Montserrat;
+        }
+
+        .ten:hover {
+            font-size: 50px;
+        }
+
+        .set_link {
+            text-decoration: none;
+            border: none;
+            background-color: whitesmoke;
+        }
+
+        .set_link:hover {
+            text-decoration: underline gray 3px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 600;
+        }
+
+        .menu-links {
+            color: #FFF4FB;
+        }
+
+        .menu-links:hover {
+            text-decoration: underline whitesmoke 3px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 600;
+            color: #FFF4FB;
+        }
+
+        .message-scroll {
+            overflow-y: scroll;
+            scrollbar-color: purple whitesmoke;
+            scrollbar-width: thin;
+        }
+
+        .tenant-scroll {
+            overflow-y: scroll;
+            scrollbar-color: gray whitesmoke;
+            scrollbar-width: thin;
+        }
+
+        .navbar {
+            color: #FFF4FB;
+        }
+
+        #footer-link {
+            text-decoration: none;
+            color: #FFF4FB;
+        }
+        #footer-link:hover {
+            text-decoration: aliceblue underline 3px;
+            font-weight: 550;
+        }
+
+        .aboutus_title {
+          font-size: clamp(16px, 8vw, 10vw);
+        }
+
+        #warning {
+          display: none;
+          color:  yellow;
+          background-color: grey;
+        }
+
+        #settings-buttons {
+            border: 2px solid indigo;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 5px;
+            width: 90px;
+            color: indigo;
+        }
+
+        #settings-buttons:hover {
+            background-color: indigo;
+            color: aliceblue;
+        } 
+
+        #settings-cancel-buttons {
+            border: 2px solid red;
+            font-size: 16px;
+            border-radius: 10px;
+            padding: 5px;
+            width: 90px;
+            color: red;
+            text-align: center;
+        }
+
+        #settings-cancel-buttons:hover {
+            background-color: red;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body id="t-con">
+        <nav class="navbar navbar-expand-lg" style="background-color: #5B676D; border-radius: 0 0 5px 5px; margin-bottom: 5px">
+            <div class="container-fluid">
+              <a class="navbar-brand" style="color: #FFF4FB" href="{% url 'dashboard' %}"><i>{{ request.user.tenantprofile.business }}</i></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div style="display: flex; align-items: center; justify-content: center; height: 5px">
+              </div>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover" src="{{ request.user.tenantprofile.picture.url }}" alt="user pic">
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'settings' %}">Settings <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
+                                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
+                                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
+                                    </svg></a>
+                                </li>
+                                <li><a class="dropdown-item" href="{% url 'logout' %}">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li style="margin-right: 50px;" class="nav-item"><button style="background-color: #5B676D; border: none; border-radius: 5px;" hx-get="{% url 'rooms'%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true" class="mb-2 cursor-pointer menu-links">Rooms</button></li>
+                        <li style="margin-right: 50px; margin-left: 50px;" class="nav-item"><button style="background-color: #5B676D; border: none; border-radius: 5px;" hx-get="{% url 'bedspaces'%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true" class="mb-2 cursor-pointer menu-links">Spaces</button></li>
+                        <li style="margin-right: 50px; margin-left: 50px;" class="nav-item"><button style="background-color: #5B676D; border: none; border-radius: 5px;" hx-get="{% url 'tenants'%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true" class="mb-2 cursor-pointer menu-links">Tenants</button></li>
+                        <li style="margin-right: 50px; margin-left: 50px;" class="nav-item"><button style="background-color: #5B676D; border: none; border-radius: 5px;" hx-get="{% url 'transactions'%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true" class="mb-2 cursor-pointer menu-links">Payments</button></li>
+                        <li style="margin-right: 50px; margin-left: 50px;" class="nav-item"><button style="background-color: #5B676D; border: none; border-radius: 5px;" hx-get="{% url 'my_receipts'%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true"  class="mb-2 cursor-pointer menu-links">Receipts</button></li>
+                    </ul>
+              </div>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {% if request.user.tenantprofile.has_paid %}
+                        <li class="nav-item"><button hx-get="{% url 'lata' %}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true" class="nav-link mb-2 cursor-pointer menu-links" >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-arrow-up" viewBox="0 0 16 16">
+                            <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4.5a.5.5 0 0 1-1 0V5.383l-7 4.2-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h5.5a.5.5 0 0 1 0 1H2a2 2 0 0 1-2-1.99zm1 7.105 4.708-2.897L1 5.383zM1 4v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1"/>
+                            <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-5.354 1.25 1.25a.5.5 0 0 1-.708.708L13 12.207V14a.5.5 0 0 1-1 0v-1.717l-.28.305a.5.5 0 0 1-.737-.676l1.149-1.25a.5.5 0 0 1 .722-.016"/>
+                            </svg>Messages
+                        </button></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <!-- modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <!-- modal -->
+      {% if messages %}
+        {% for message in messages %}
+            <div id="message-timer" class="success success-{{message.tags }} float-center text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+      {% endif %}
+      <p id="warning">Warning: For a Better Experience, Use A Computer(laptop, Desktop) Or A Tablet.</p>
+    {% block content %}
+
+    {% endblock %}
+    <script src="{% static 'stephan/popper.min.js' %}"></script>
+    <script src="{% static 'stephan/chartjs/dist/chart.umd.js' %}"></script>
+    <script src="{% static 'stephan/bootstrap.min.js' %}"></script>
+    <script src="{% static 'stephan/htmx.min.js' %}" defer></script>
+    <script src="{% static 'stephan/stephan.js'%}"></script>
+    <script>
+        function checkScreenResolution() {
+          let warningMessage = document.getElementById("warning");
+  
+            if (window.innerWidth < 768) {
+                warningMessage.style.display = "block"; // Show warning for mobile screens
+            } else {
+                warningMessage.style.display = "none"; // Hide warning for larger screens
+            }
+        }
+  
+        // Run the function on page load and when the window resizes
+        window.onload = checkScreenResolution;
+        window.onresize = checkScreenResolution;
+      </script>
+</body>
+<footer>
+    <div style="width: 100%; max-width: 100% ; background-color: indigo; min-height: 50px; max-height: 300px; display: flex; align-items: center; justify-content: space-evenly; margin-top: 5px; flex-wrap: wrap;">
+        <span style="color: #FFF4FB; font-weight: 550;">&copy;Sophans 2025</span>
+        <span> <a id="footer-link" href="{% url 'profile' %}">Profile</a></span>
+        <span> <a id="footer-link" href="{% url 'logout' %}">Log out</a></span>
+        <span> <a id="footer-link" href="{% url 'about-us' %}">About Us</a></span>
+        <span style="color: #FFF4FB;">+260764738169</span>
+    </div>
+</footer>
+</html>

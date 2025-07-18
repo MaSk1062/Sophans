@@ -1,0 +1,120 @@
+{% extends 'mapalo/base.html' %}
+{% block head_title %}
+	Plan Details
+{% endblock %}
+{% block content %}
+	<div class="container-fluid">
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: 50px;">
+            <h1 style="color: indigo;">
+                {{ plan.name }}
+            </h1>
+            {% if plan.name == "Monthly Plan"%}
+                <div style="width: 100%; max-width: 100%; height: 200px;">
+                    <h1 style="text-align: center;">K{{plan.price}}/<small>month</small> </h1>
+                    <h4 style="text-align: center;">Pay K499. One Month Free For New Users. One Month Period Starts After The One Month Trial.</h4>
+                </div>
+                <h2 style="color: indigo; text-align: center; margin-bottom: 30px;">Payment Options</h2>
+                <div style="width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                    <div style="color: indigo; width: 300px; max-width: 100%; height: 300px; max-height: 300px; border: 3px solid red; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+                    <h2 style="color: red; text-align: center; border-bottom: 3px solid red; border-radius: 10px; width: 200px;">Airtel Money</h2>
+                    <h4 style="text-align: center;">0776514959 <br> <small>"Stephan Kalaba"</small></h5>
+                    <p style="text-align: center;">Send Money To This Number, Upon Confirming, You Subscription Will Be Activated</p>
+                    </div>
+                    <div style="border: 3px solid blue; border-radius: 20px; width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: none; border-radius: 15px; margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <div style="margin-bottom: 30px; margin-top: 30px; display: flex; align-items: center; justify-content: center; width: 100%;">
+                                {% if request.user.is_authenticated %}
+                                    <div id="paypal-button-container"></div>
+                                {% else %}
+                                    <a class="paypal-detail-btn" href="{% url 'public-signup'%}">Subscribe</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <h6 style="text-align: center; color: #E9E4E9; margin-top: 30px;"> Sophans <br> uses Paypal for payment processing.</h6>
+                    </div>
+                    <div style="width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: 3px solid yellow; border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-direction: column; margin-bottom: 20px;">
+                        <h2 style="color: indigo; text-align: center; border-bottom: 3px solid yellow; border-radius: 10px; width: 200px;">MTN Mobile Money</h2>
+                    <h4 style="text-align: center;">0776514959 <br> <small>"Stephan Kalaba"</small></h5>
+                    <p style="text-align: center;">Send Money To This Number, Upon Confirming, You Subscription Will Be Activated</p>
+                    </div>
+                </div>
+            {% elif plan.name == "Five(5) Months Plan"%}
+                <div style="width: 100%; max-width: 100%; height: 300px; max-height: 300px;">
+                    <h1 style="text-align: center;">K2,350 <br> K{{plan.price}}/<small>month</small> * 5</h1>
+                    <h4 style="text-align: center;">Pay K2,350. One Month Free For New Users. Five Months Period Starts After The One Month Trial.</h4>
+                </div>
+                <h2 style="color: indigo; text-align: center; margin-bottom: 30px;">Payment Options</h2>
+                <div style="width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                    <div style="color: indigo; width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: 3px solid red; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+                      <h2 style="color: red; text-align: center; border-bottom: 3px solid red; border-radius: 10px; width: 200px;">Airtel Money</h2>
+                      <h4 style="text-align: center;">0776514959 <br> <small>"Stephan Kalaba"</small></h5>
+                      <p style="text-align: center;">Send Money To This Number, Upon Confirming, You Subscription Will Be Activated</p>
+                    </div>
+                    <div style="border: 3px solid blue; border-radius: 20px; width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: none; border-radius: 15px; margin-bottom: 20px;">
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <div style=" margin-bottom: 30px; margin-top: 30px; display: flex; align-items: center; justify-content: center; width: 100%;">
+                                {% if request.user.is_authenticated %}
+                                    
+                                {% else %}
+                                    <a class="paypal-detail-btn" href="{% url 'public-signup'%}">Subscribe</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <h6 style="text-align: center; color: #E9E4E9; margin-top: 30px;"> Sophans <br> uses Paypal for payment processing.</h6>
+                    </div>
+                    <div style="width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: 3px solid yellow; border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-direction: column; margin-bottom: 20px;">
+                        <h2 style="color: indigo; text-align: center; border-bottom: 3px solid yellow; border-radius: 10px; width: 200px;">MTN Mobile Money</h2>
+                      <h4 style="text-align: center;">0776514959 <br> <small>"Stephan Kalaba"</small></h5>
+                      <p style="text-align: center;">Send Money To This Number, Upon Confirming, You Subscription Will Be Activated</p>
+                    </div>
+                </div>
+            {% else %}
+            <div style="width: 100%; max-width: 100%; height: 200px;">
+                <h1 style="text-align: center;">K3,500<br>K{{plan.price}}/<small>month</small> * 12</h1>
+                <h4 style="text-align: center;">Pay K3,500. One Month Free For New Users. 12 Months Period Starts After The One Month Trial.</h4>
+            </div>
+            <h2 style="color: indigo; text-align: center; margin-bottom: 30px;">Payment Options</h2>
+            <div style="width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                <div style="color: indigo; width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: 3px solid red; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 20px;">
+                  <h2 style="color: red; text-align: center; border-bottom: 3px solid red; border-radius: 10px; width: 200px;">Airtel Money</h2>
+                  <h4 style="text-align: center;">0776514959 <br> <small>"Stephan Kalaba"</small></h5>
+                  <p style="text-align: center;">Send Money To This Number, Upon Confirming, You Subscription Will Be Activated</p>
+                </div>
+                <div style="border: 3px solid blue; border-radius: 20px; width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: none; border-radius: 15px; margin-bottom: 20px;">
+                    <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                        <div style="margin-bottom: 30px; margin-top: 30px;">
+                            {% if request.user.is_authenticated %}
+                                <div id="paypal-button-container"></div>
+                            {% else %}
+                                <a class="paypal-detail-btn" href="{% url 'public-signup'%}">Subscribe</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <h6 style="text-align: center; color: #E9E4E9; margin-top: 30px;"> Sophans <br> uses Paypal for payment processing.</h6>
+                </div>
+                <div style="width: 320px; max-width: 100%; height: 300px; max-height: 300px; border: 3px solid yellow; border-radius: 15px; display: flex; align-items: center; justify-content: center; flex-direction: column; margin-bottom: 20px;">
+                    <h2 style="color: indigo; text-align: center; border-bottom: 3px solid yellow; border-radius: 10px; width: 200px;">MTN Mobile Money</h2>
+                  <h4 style="text-align: center;">0776514959 <br> <small>"Stephan Kalaba"</small></h5>
+                  <p style="text-align: center;">Send Money To This Number, Upon Confirming, You Subscription Will Be Activated</p>
+                </div>
+            </div>
+            {% endif %}
+            <h6 style="text-align: center; margin-top: 30px; color: rgba(76, 0, 130, 0.733);">Note: <br>-Sometimes Payment Confirmation And Subscription Activation May Be Delayed.</h6>
+            <h6 style="text-align: center; color: rgba(76, 0, 130, 0.733);">-A Payment is required for new users for user verification, So any amount paid will take effect after the free month trail.</h6>
+        </div>
+    </div>
+
+
+    <script>
+        paypal.Buttons({
+         createSubscription: function(data, actions) {
+           return actions.subscription.create({
+            'plan_id': '{{plan.plan_id}}' // Creates the subscription
+            });
+          },
+          onApprove: function(data, actions) {
+            alert('You have successfully subscribed to ' + data.subscriptionID); // Optional message given to subscriber
+          }
+        }).render('#paypal-button-container'); // Renders the PayPal button
+       </script>
+{% endblock content %}

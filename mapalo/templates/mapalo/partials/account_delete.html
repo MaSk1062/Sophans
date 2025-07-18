@@ -1,0 +1,42 @@
+{% extends 'mapalo/partials/form-index.html' %}
+{% block head_title %}
+	Account Deletion
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h2 style="color: indigo;">Delete Your Account</h2>
+    <p style="color: red;"><strong>Warning:</strong> This action is permanent and cannot be undone.</p>
+    <p style="font-size: 20px;">All your personal data, including your profile, preferences, and any associated records, will be permanently removed.
+        You will lose access to your account and all related services.
+        Any active subscriptions or payments will be canceled.
+        If you simply want to take a break, consider deactivating your account instead.
+    </p>
+    <div style="display: flex; align-items: center; justify-content: center; width: 100%">
+        <div style="width: 600px; background-color: whitesmoke; height: auto; padding: 10px;border-radius: 10px">
+            <form method="POST" action="{% url 'account-delete' %}">
+                {% csrf_token %}
+                <div class="input-group flex-nowrap">
+                    <label for="confirmation_text" class="form-label">Type <strong>"DELETE"</strong> to confirm:</label>&nbsp;
+                    <input type="text" style="border-radius: 10px" id="confirmation_text" class="form-control" aria-describedby="addon-wrapping" name="confirmation_text" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" style="border-radius: 10px" id="password" class="form-control" name="password" required>
+                </div>
+                <button type="submit" onclick="return confirmDeletion()" class="btn btn-outline-danger">Delete My Account</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function confirmDeletion() {
+            let confirmationText = document.getElementById("confirmation_text").value;
+            if (confirmationText !== "DELETE") {
+                alert("You must type 'DELETE' to confirm.");
+                return false;
+            }
+            return confirm("Are you sure you want to delete your account? This action cannot be undone.");
+        }
+    </script>
+</div>
+{% endblock %}

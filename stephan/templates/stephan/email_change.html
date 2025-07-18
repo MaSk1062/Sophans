@@ -1,0 +1,21 @@
+{% extends 'stephan/base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+    Sophans Email Change
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <div style="width: 100%; max-width: 100%; border: 1px solid lightgrey; border-radius: 10px; padding: 2rem; box-shadow: 5px 2px 5px 5px lightgrey; margin-top: 3rem; margin-bottom: 3rem;">
+        <form method="post" class="form" action="{% url 'email-change' %}">
+        {% csrf_token %}
+        <legend>Change Email</legend>
+        {{ form|crispy }}
+         <div style="display: flex; align-items: center; justify-content: center">
+            <a style="text-align: center;" type="submit" id="settings-cancel-buttons">Cancel</a> &nbsp; &nbsp;
+            <button type="submit" id="settings-buttons">Update</button>
+         </div>
+      </form>
+    </div>
+</div>
+
+{% endblock content %}

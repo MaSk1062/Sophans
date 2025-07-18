@@ -1,0 +1,22 @@
+{% extends 'stephan/base.html'%}
+{% block head_title %}
+	Tenant Delete
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center">
+            <div style="width: 50%; background-color: whitesmoke; border-radius: 10px; padding: 5px; margin-top: 50px;">
+                <form action="" method="post">
+                    {% csrf_token%}
+                    <div style="margin-top: 50px;">
+                    <p style="text-align: center; font-size: 20px; font-family: Arial, Helvetica, sans-serif; color: rgba(0,0,0,0.68)">
+                        Are You You Want To Delete <b>{{object.name}}</b> in <b>{{object.bedroom}}</b> From Your List Of Tenants
+                    </p>
+                    <button class="btn btn-outline-success" type="submit">Cancel</button>
+                    <button class="btn btn-outline-danger float-end" type="submit">Confirm</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

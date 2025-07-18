@@ -1,0 +1,6 @@
+.env
+__pychache__
+media
+django.log
+dump.rdb
+migrations

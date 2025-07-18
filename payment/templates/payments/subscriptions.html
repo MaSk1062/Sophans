@@ -1,0 +1,56 @@
+{% extends 'mapalo/base.html' %}
+{% block head_title %}
+	My Subscriptions
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <h1 style="margin-top: 10px; color: indigo; text-align: center;">Subscriptions</h1>
+        {% if subs %}
+            <div style="display: flex; flex-direction: column; min-height: 100vh; align-items: center; justify-content: center;">
+                {% for sub in subs %}
+                {% if sub.status == "ACTIVE"%}
+                    <div class="card" style="width: 500px; max-width: 100%; border-radius: 15px; padding: 10px;">
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <h4 style="color: indigo;" class="m-1">Current Subscription Plan</h4>
+                            <span style="color: green; margin-right: 5px;" class="float-end">{{ sub.status}}</span>
+                        </div>
+                        <p class="card-body" style="height: 20px; color: indigo">
+                            {{ sub.plan_type}}
+                        </p>
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <h3 style="margin-left: 15px; color: indigo;">K{{sub.amount}}<small>/month</small></h3>
+                            <div class="mb-1 " style="margin-right: 10px">
+                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                                    <a class="btn btn-outline-danger" href="#">Suspend</a>&nbsp;
+                                    <a class="btn btn-outline-danger" href="#">Cancel</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="color: indigo;" class="float-end">Expires on: {{ sub.expire_on}}</span>
+                        
+                    </div>
+                    <hr>
+                {% else %}
+                    <div class="card" style="width: 500px; max-width: 100%; margin-bottom: 50px; border-radius: 10px; padding: 10px;">
+                        <p class="card-body" style="height: 20px; color: indigo">
+                            {{ sub.plan_type}}
+                        </p>
+                        <div style="display: flex; align-items: center; justify-content: space-between;">
+                            <h3 style="margin-left: 15px; color: indigo;">K{{sub.amount}}<small>/month</small></h3>
+                            <span style="color: red; margin-right: 5px;" class="float-end">{{ sub.status }}</span>
+                            <div class="mb-1 " style="margin-right: 10px">
+                                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;">
+                                    <a class="btn btn-outline-secondary" href="#">Reactivate</a>
+                                </div>
+                            </div>
+                        </div>
+                        <span style="color: indigo;" class="float-end">Expired on: {{ sub.expire_on}}</span>
+                    </div>
+                {% endif %}
+            {% endfor %}
+            </div>
+        {% else %}
+            No Subscriptions Yet
+        {% endif %}
+    </div>
+{% endblock content %}

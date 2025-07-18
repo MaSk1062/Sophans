@@ -1,0 +1,16 @@
+{% extends 'mapalo/base.html'%}
+{% load crispy_forms_tags %}
+{% block head_title %}
+    Sophans Profile Update
+{% endblock %}
+{% block content %}
+<div class="container mt-5">
+    <h2 style="text-align: center; color: indigo;">Profile Update</h2>
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form|crispy}}
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}

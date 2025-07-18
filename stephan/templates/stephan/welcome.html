@@ -1,0 +1,30 @@
+{% extends 'stephan/base.html' %}
+{% block head_title %}
+	Welcome To MSNT
+{% endblock %}
+{% block content %}
+	<div class="container">
+        {% if request.user.is_authenticated %}
+            <div style="text-align: center; margin-top: 300px;">
+                <a class="btn btn-outline-secondary" href="{% url 'home' %}">Dashboard</a>
+            </div>
+
+        {% else %}
+
+            <div style="text-align: center; margin-top: 200px; font-family: 'Consolas', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', monospace">
+                <h1>Hi</h1>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+                <div>
+                    <a class="btn btn-outline-dark" href="{% url 'tenant-signup' %}" >Sign Up</a>
+                </div>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center; margin-top: 50px;">
+                <div>
+                    <a class="btn btn-outline-dark" href="{% url 'login' %}" >Login</a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock content %}

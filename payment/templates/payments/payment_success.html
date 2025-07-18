@@ -1,0 +1,15 @@
+{% extends 'payments/p_base.html' %}
+{% block head_title %}
+	Payment Failed
+{% endblock %}
+{% block content %}
+	<div class="container">
+        <h1>PAYMENT SUCCESSFUL, HAVE A BLAST AND GIVE THEM HELL</h1>
+        <a href="{% url 'home' %}" class="btn btn-info">Dashboard</a>
+        <h1>Subscription Successful!</h1>
+        <a href="{% url 'cancel' %}">Cancel Subscription</a> |
+        <a href="{% url 'pause' %}">Pause Subscription</a> |
+        <a href="{% url 'reactivate' %}">Reactivate Subscription</a>
+
+    </div>
+{% endblock content %}

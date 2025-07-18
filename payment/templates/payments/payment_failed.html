@@ -1,0 +1,10 @@
+{% extends 'payments/p_base.html' %}
+{% block head_title %}
+	Payment Failed
+{% endblock %}
+{% block content %}
+	<div class="container">
+        <h1 style="margin-top: 200px;">PAYMENT FAILED, CHECK YOUR ACCOUNT AND TRY AGAIN</h1>
+        <a href="{% url 'subscription-plans'%}" class="btn btn-info">Try Again</a>
+    </div>
+{% endblock content %}

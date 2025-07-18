@@ -1,0 +1,24 @@
+{% extends 'stephan/base.html'%}
+{% block head_title %}
+	Bedroom Edit
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div style="width: 100%; display: flex; align-items: center; justify-content: center; margin-top: 30px;">
+            <div style="width: 700px; max-width: 199%; border: 2px solid indigo; border-radius: 13px; padding: 10px;">
+                <form action="" method="post">
+                    <legend style="text-align: center; font-size: 19px;">Edit Room</legend>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div style="width: 100%; max-width: 100%; display: flex; align-items: center; justify-content: space-evenly;">
+                        <a href="{{request.META.HTTP_REFERER}}" type="submit" style="text-decoration: none; color: red; font-size: 16px;">Cancel</a>
+                        <button class="form-confirm-button" type="submit">Update</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}
+

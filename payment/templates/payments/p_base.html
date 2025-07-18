@@ -1,0 +1,123 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'mapalo/main.css'%}">
+    <link rel="stylesheet" href="{% static 'mapalo/style.css' %}">
+    <script src="https://sandbox.paypal.com/sdk/js?client-id={{ client_id }}"></script>
+    <title>
+        {% block head_title %}
+	        Sophans
+        {% endblock %}
+    </title>
+    <style>
+      body {
+        background-color: #E9E4E9;
+        font-family: Montserrat;
+      }
+
+      .sub-data {
+          font-size: 15px;
+          line-height: 25px;
+          font-family: Montserrat;
+          color: rgba(0, 0, 0, 0.57);
+          list-style: none;
+      }
+
+
+      .subscribe-button {
+          font-family: Montserrat;
+          border: 1px solid gray;
+          width: 200px;
+          height: 40px;
+          padding: 3px;
+          border-radius: 10px;
+          text-align: center;
+          display: flex;
+          cursor: pointer;
+      }
+
+      .paypal-btn {
+          border-color: blue;
+      }
+
+      .paypal-btn:hover {
+          background-color: #0dcaf0;
+      }
+
+      .subscribe-button:hover {
+          background-color: gray;
+          color: darkslategrey;
+      }
+
+      .sub-opt {
+          border-radius: 30px;
+          box-shadow: 1px 1px 1px 1px whitesmoke;
+      }
+
+      .sub-opt:hover {
+          border: 3px solid rgba(108, 108, 138, 0.51);
+          cursor: pointer;
+          transition: .15s;
+          width: 30%;
+          border-radius: 30px;
+          box-shadow: 1px 10px 20px 4px rgba(108, 108, 138, 0.51);
+      }
+
+      .sub-opt2 {
+          border-radius: 30px;
+          box-shadow: 1px 1px 1px 1px whitesmoke;
+      }
+
+      .sub-opt2:hover {
+          border: 3px solid #d305d3;
+          cursor: pointer;
+          transition: .15s;
+          width: 30%;
+          border-radius: 30px;
+          box-shadow: 1px 10px 20px 4px #d305d3;
+      }
+
+      .sub-opt3 {
+          border-radius: 30px;
+          box-shadow: 1px 1px 1px 1px whitesmoke;
+      }
+
+      .sub-opt3:hover {
+          border: 3px solid maroon;
+          cursor: pointer;
+          transition: .15s;
+          width: 30%;
+          border-radius: 30px;
+          box-shadow: 1px 10px 20px 4px maroon;
+      }
+      .mon-btn:hover {
+          background-color: rgba(108, 108, 138, 0.51);
+          font-weight: bold;
+
+      }
+
+      .five-btn:hover {
+          background-color: #d305d3;
+          font-weight: bold;
+      }
+
+      .year-btn:hover {
+          background-color: maroon;
+          font-weight: bold;
+      }
+
+    </style>
+</head>
+<body id="t-con">
+    {% block content %}
+    {% endblock content %}
+
+
+
+    <script src="{% static 'mapalo/popper.min.js'%}"></script>
+    <script src="{% static 'mapalo/bootstrap.min.js'%}"></script>
+</body>
+</html>

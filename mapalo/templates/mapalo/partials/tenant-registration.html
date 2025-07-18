@@ -1,0 +1,17 @@
+{% load crispy_forms_tags %}
+<div class="container">
+    <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: 20vh;">
+        <div style="width: 500px; max-width: 100%">
+
+        </div>
+    <!-- Tenant Menu -->
+        <div style="width: 400px; max-width: 100%; border: 2px solid white; border-radius: 9px; background-color: whitesmoke; margin-left: .1rem; padding: 10px">
+            <form action="" method="post">
+                {% csrf_token %}
+                <legend style="font-size: 20px;">Begin Account Set Up</legend>
+                {{tenant_form|crispy}}
+                <button type="submit" class="btn btn-outline-secondary float-end">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

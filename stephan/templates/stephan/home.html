@@ -1,0 +1,234 @@
+{% extends 'stephan/index.html'%}
+{% load partials %}
+{% block head_title %}
+	Dashboard
+{% endblock %}
+{% block content %}
+    <div style="color: indigo;" class="container-fluid">
+        <div class="row align-items-center" style="width: 100%; height: 200px; max-height: 200px; border-radius: 10px; margin-left: 2px">
+        <div class="col col-sm-1 col-sm col-1 " style=" width: 30%; height: 200px; border-radius:10px; text-align: center">
+        {% if rooms %}
+          <div style="display: flex; align-items: center; justify-content: center; width: 400px; height: 200px">
+            <canvas id="roomsdoughnut"></canvas>
+          </div>
+          Bedrooms
+      {% else %}
+      <h3>Create Bedrooms</h3>
+          <span>
+            <a style="font-size: 20px; display: flex; align-items: center; justify-content: center; text-align: center" href="{% url 'room-create' %}" class="btn btn-outline-dark">+</a>
+          </span>
+      {% endif %}
+  </div>
+  <div class="col col-4 col-sm-1" style=" width: 30%; height: 200px; border-radius:10px; text-align: center">
+      {% if tenants %}
+          <div style="display: flex; align-items: center; justify-content: center; width: 400px; height: 200px">
+            <canvas class="img-fluid" id="tenantsdoughnut"></canvas>
+          </div>
+      {% else %}
+      <h3>Add Tenants</h3>
+          <a style="font-size: 20px; display: flex; align-items: center; justify-content: center" href="{% url 'tenant-create' %}" class="btn btn-outline-dark">+</a>
+      {% endif %}
+    <p>Tenants</p>
+  </div>
+  <div class="col" style=" width: 30%; height: 200px; border-radius:10px; text-align: center">
+      {% if spaces %}
+      <div style="display: flex; align-items: center; justify-content: center; width: 400px; height: 200px">
+            <canvas id="spacedoughnut"></canvas>
+          </div>
+      {% else %}
+      <h3>Create Spaces</h3>
+          <a style="font-size: 20px; display: flex; align-items: center; justify-content: center" href="{% url 'bedspace-create' %}" class="btn btn-outline-dark">+</a>
+      {% endif %}
+  <p>Bedspaces</p>
+  </div>
+</div>
+    <br>
+    <br>
+<div style="display: flex; align-items: center; justify-content: space-evenly; margin-right: 5px; width: 100%; flex-wrap: wrap;">
+  <div style="background-color: lightgrey; width: 1000px; height: 100vh; max-width: 100%; border-radius: 5px;">
+    <div style="padding: 10px;">
+        {% if tenant_page %}
+      <table class="table table-borderless table-hover table-secondary">
+        <thead>
+          <tr>
+            <th style="color: indigo;" scope="col">#</th>
+            <th style="color: indigo;"scope="col">Photo</th>
+            <th style="color: indigo;"scope="col">Name</th>
+            <th style="color: indigo;"scope="col">Sex</th>
+            <th style="color: indigo;"scope="col">Contact</th>
+            <th style="color: indigo;"scope="col">School</th>
+            <th style="color: indigo;"scope="col">Paid</th>
+            <th style="color: indigo;"scope="col">Room</th>
+            <th style="color: indigo;"scope="col">Added</th>
+            <th style="color: indigo;"scope="col">View</th>
+          </tr>
+        </thead>
+          <tbody class="table-group-divider">
+                {% for tenant in tenant_page %}
+                    {% if tenant.paid %}
+                        <tr>
+                          <th scope="row">{{forloop.counter}}</th>
+                            <td><img style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover" src="{{tenant.picture.url}}" alt="tp" width="20px" height="20px"></td>
+                          <td>{{tenant.name}}</td>
+                          <td>{{tenant.sex}}</td>
+                          <td>{{tenant.contact}}</td>
+                          <td>{{tenant.school}}</td>
+                          <td>K{{tenant.amount}}</td>
+                          <td>{{tenant.bedspace.bedroom.name}}</td>
+                          <td>{{tenant.added}}</td>
+                          <td><button style="border: none; border-radius: 7px; color: indigo;" hx-get="{% url 'tenant-detail' tenant.id%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+                        </tr>
+                    {% elif tenant.paid and tenant.notice %}
+                        <tr>
+                            <th style="color: yellow" scope="row">{{forloop.counter}}</th>
+                            <td style="color: yellow">{{tenant.name}}</td>
+                            <td style="color: yellow">{{tenant.sex}}</td>
+                            <td style="color: yellow">{{tenant.contact}}</td>
+                            <td style="color: yellow">{{tenant.school}}</td>
+                            <td style="color: yellow">K{{tenant.amount}}</td>
+                            <td style="color: yellow">{{tenant.bedspace.bedroom.name}}</td>
+                            <td style="color: yellow">{{tenant.added}}</td>
+                            <td style="color: yellow"><button style="border: none; border-radius: 7px; color: yellow;" hx-get="{% url 'tenant-detail' tenant.id%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                          <th style="color: red" scope="row">{{forloop.counter}}</th>
+                            <td><img style="width: 20px; height: 20px; border-radius: 50%; object-fit: cover" src="{{tenant.picture.url}}" alt="tp" width="20px" height="20px"></td>
+                          <td style="color: red">{{tenant.name}}</td>
+                          <td style="color: red">{{tenant.sex}}</td>
+                          <td style="color: red">{{tenant.contact}}</td>
+                          <td style="color: red">{{tenant.school}}</td>
+                          <td style="color: red">K{{tenant.amount}}</td>
+                          <td style="color: red">{{tenant.bedspace.bedroom.name}}</td>
+                          <td style="color: red">{{tenant.added}}</td>
+                          <td><button style="border: none; border-radius: 7px; color: red;" hx-get="{% url 'tenant-detail' tenant.id%}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                {% if tenant_page.has_previous %}
+                    <a class="btn btn-outline-secondary mb-4" href="?page=1">First</a>&nbsp;
+                {% endif %}
+
+                {% for num in tenant_page.paginator.page_range %}
+                    {% if tenant_page.number == num %}
+                        <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>&nbsp;
+                    {% elif num > tenant_page.number|add:'-3' and num < tenant_page.number|add:'3' %}
+                        <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>&nbsp;
+                    {% endif %}
+                {% endfor %}
+          </tbody>
+      </table>
+            <button style="color: indigo; font-size: 15px; text-decoration: none; border: none; border-radius: 7px" class="ten" hx-get="{% url 'tenants' %}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">More</button>
+        {% else %}
+            <h1 style="text-align: center">No Tenants Available</h1>
+            <a style="font-size: 20px; display: flex; align-items: center; justify-content: center" href="{% url 'tenant-create' %}" class="btn btn-outline-dark">+</a>
+        {% endif %}
+    </div>
+
+  </div>
+  <div style="width: 200px; max-width: 100%; height: 100vh;">
+    <div style="background-color: lightslategrey; width: 100%; height: auto; border-radius: 5px;">
+        <p style='color: black; font-weight: 600; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin-left: 5px; margin-top: 5px; margin-bottom: 1px;'>Rooms</p>
+      <ol>
+        {% if rooms_page %}
+            {% for room in rooms_page %}
+            <li style='color: black; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif'>{{ room.name}}</li>
+            {% empty %}
+                no rooms available
+            {% endfor %}
+        {% endif %}
+      </ol>
+    </div>
+    <div style="background-color: lightslategrey; width: 100%; height: auto; border-radius: 5px;">
+        <p style='color: black; font-weight: 600; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; margin-left: 5px; margin-top: 5px; margin-bottom: 1px;'>Bedspaces</p>
+      <ol>
+        {% if space_page %}
+            {% for space in space_page %}
+            <li style='color: black; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif'>{{ space.name}}</li>
+            {% empty %}
+            no bedspaces
+            {% endfor %}
+      {% endif %}
+      </ol>
+    </div>
+      <hr>
+  </div>
+
+</div>
+    </div>
+
+
+    <script>
+      const rdn = document.getElementById('roomsdoughnut');
+          new Chart(rdn, {
+            type: 'doughnut',
+            data: {
+              labels: ['Male Rooms', 'Female Rooms'],
+              datasets: [{
+                label: 'Total Rooms',
+                data: [{{ mrooms }}, {{ frooms }}],
+                backgroundColor: [
+                  'indigo',
+                  'gray',
+                ],
+                hoverOffset: 4,
+                borderColor: 'lightgrey',
+                borderRadius: 5,
+                rotation: 5
+              }]
+            },
+          });
+
+
+          const tdn = document.getElementById('tenantsdoughnut');
+          new Chart(tdn, {
+            type: 'doughnut',
+            data: {
+              labels: ['Males', 'Females'],
+              datasets: [{
+                label: 'Total Tenants',
+                data: [{{ males }}, {{ females }}],
+                backgroundColor: [
+                  'indigo',
+                  'gray',
+                ],
+                hoverOffset: 4,
+                borderColor: 'lightgrey',
+                borderRadius: 5,
+                rotation: 5
+              }]
+            },
+          });
+
+
+          const sdn = document.getElementById('spacedoughnut');
+          new Chart(sdn, {
+            type: 'doughnut',
+            data: {
+              labels: ['Male Spaces', 'Female Spaces'],
+              datasets: [{
+                label: 'Total Spaces',
+                data: [{{ bmales }}, {{ bfemales }}],
+                backgroundColor: [
+                  'indigo',
+                  'gray',
+                ],
+                hoverOffset: 4,
+                borderColor: 'lightgrey',
+                borderRadius: 5,
+                rotation: 5
+              }]
+            },
+          });
+
+
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+
+
+      const toastElList = document.querySelectorAll('.toast')
+      const toastList = [...toastElList].map(toastEl => new bootstrap.Toast(toastEl, option))
+
+
+    </script>
+{% endblock content %}

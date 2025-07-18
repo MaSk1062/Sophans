@@ -1,0 +1,66 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'stephan/main.css'%}">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Tenant Receipts</title>
+    <style>
+     @page  {
+         size: A4;
+         margin: 2.5cm 1.5cm 3.5cm 1.5cm;
+         font-family: Montserrat;
+
+
+         @top-center {
+             content: "{{ landlord.tenantprofile.business }} Tenant Receipts";
+         }
+
+         @top-left {
+             content: "Receipts {{ total_receipts }}";
+         }
+
+         @bottom-center {
+             content: "Sophans";
+         }
+
+         @bottom-right {
+             content: "Page" counter(page) " of " counter(page);
+         }
+     }
+    </style>
+</head>
+<body>
+    {% if receipts %}
+         <table class="table table-borderless table-hover table-secondary">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Receipt Number</th>
+                      <th scope="col">Amount</th>
+                      <th scope="col">Date Created</th>
+                    </tr>
+                  </thead>
+                    <tbody class="table-group-divider">
+                      {% for receipt in receipts %}
+                        <tr>
+                          <th style="margin-bottom: 5px;" scope="row">{{forloop.counter}}</th>
+                          <td style="margin-bottom: 5px;">{{receipt.tenant.name}}</td>
+                          <td style="margin-bottom: 5px;">{{receipt.receipt_number}}</td>
+                          <td style="margin-bottom: 5px;">K{{receipt.amount}}</td>
+                          <td style="margin-bottom: 5px;">{{receipt.date_created}}</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+        {% else %}
+            <h1>No Tenants Receipts Here</h1>
+        {% endif %}
+</body>
+</html>

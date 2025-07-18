@@ -1,0 +1,46 @@
+{% extends 'mapalo/base.html' %}
+{% block content %}
+    <div class="container-l">
+        <section>
+            <p>We Value Your Feedback</p>
+            <span>Let us know how we can improve! Your feedback helps us make the platform better.</span>
+            <div style="width: 100%; height: auto; display: flex; align-items: center; justify-content: center; margin: 10px">
+                <div style="background-color: whitesmoke; padding: 10px; width: 500px; max-width: 100%; border-radius: 10px">
+                   <form method="POST" action="{% url 'feedback' %}">
+                       {% csrf_token %}
+                       <div input-group flex-nowrap>
+                           <label for="name" class="form-label">Name:</label>
+                           <input type="text" class="form-control" id="name" name="name" required>
+                       </div>
+                       <div input-group flex-nowrap>
+                           <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                       </div>
+                       <div input-group flex-nowrap>
+                           <label for="message" class="form-label">Your Feedback:</label>
+                           <textarea id="message" class="form-control" name="message" required></textarea>
+                       </div>
+                        <button style="margin-top: 5px" type="submit" class="btn btn-outline-success">Submit Feedback</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        document.querySelector("form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            fetch("{% url 'feedback' %}", {
+                method: "POST",
+                body: new FormData(this),
+                headers: { "X-CSRFToken": "{{ csrf_token }}" }
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert("Thank you for your feedback!");
+                this.reset();
+            })
+            .catch(error => alert("An error occurred. Please try again."));
+        });
+    </script>
+{% endblock content %}

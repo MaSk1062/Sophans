@@ -1,0 +1,15 @@
+{% extends 'stephan/base.html'%}
+{% block head_title %}
+	Bed Space Delete
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token%}
+            <div style="text-align: center; margin-top: 50px;">
+                <h3 style="color: rgba(0,0,0,0.6)">Are You You Want To Delete {{object.name}} From Your List Of Bedspaces</h3>
+                <button class="btn btn-outline-danger" type="submit">Confirm</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

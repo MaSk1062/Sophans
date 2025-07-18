@@ -1,0 +1,21 @@
+{% extends 'stephan/base.html'%}
+{% block head_title %}
+	Bed Space Edit
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div style="width: 100%; height: auto; margin-top: 100px; display: flex; align-items: center; justify-content: center">
+            <div style="padding: 10px; width: 500px; height: auto; background-color: lightgrey; border-radius: 5px">
+                <form id="cform" action="" method="post">
+                    <legend>Edit Bedspace</legend>
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <a href="{{request.META.HTTP_REFERER}}" class="btn btn-outline-danger" style="border-radius: 15px;">Cancel</a>
+                    <button class="btn btn-outline-secondary float-end" type="submit" style="border-radius: 15px;">Update</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

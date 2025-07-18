@@ -1,0 +1,15 @@
+{% extends 'stephan/base.html'%}
+{% block head_title %}
+	Bedroom Delete
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <form action="" method="post">
+            {% csrf_token%}
+            <div style="text-align: center; margin-top: 50px;">
+                <h1>Are You You Want To Delete {{object.name}} From Your List Of Rooms</h1>
+                <button class="btn btn-outline-danger" type="submit">Confirm</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}

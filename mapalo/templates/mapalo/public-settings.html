@@ -1,0 +1,21 @@
+{% extends 'mapalo/base.html' %}
+{% block head_title %}
+	sophans User Settings
+{% endblock %}
+{% block content %}
+	<div class="container-fluid">
+    <div style="display: flex; flex-wrap: wrap;">
+        <div style="width: 300px; max-width: 100%; min-height: 100px; max-height: 600px; border-right: 1px solid #01011e; border-radius: 7px;">
+            <ul style="list-style-type: none; line-height: 30px; background-color: #E9E4E9;">
+                <li><button class="set_link" style="color: indigo; margin-top: 2rem; background-color: #E9E4E9;" hx-get="{% url 'public-password-change' %}" hx-target="#settings_detail" hx-swap="innerHTML">Change Password</button></li>
+                <li><button class="set_link" style="color: indigo; background-color: #E9E4E9;" hx-get="{% url 'email-change' %}" hx-target="#settings_detail" hx-swap="innerHTML">Change Email</button></li>
+                <li><button class="set_link" style="color: red; background-color: #E9E4E9;" hx-get="{% url 'account-delete' %}" hx-target="#settings_detail" hx-swap="innerHTML">Delete Account</button></li>
+            </ul>
+        </div>
+        <div style="width: 1000px; max-width: 100%; height: auto; border-radius: 10px; margin-left: 10px;" id="settings_detail">
+            Click on Any Option on the Left to See More Details
+        </div>
+
+    </div>
+    </div>
+{% endblock content %}

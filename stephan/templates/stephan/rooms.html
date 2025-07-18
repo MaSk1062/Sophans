@@ -1,0 +1,146 @@
+{% extends 'stephan/index.html'%}
+{% load widget_tweaks %}
+{% block head_title %}
+	Bedrooms
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container-fluid">
+  <h1 style="text-align: center; color: indigo;">{{ request.user.tenantprofile.business }} Rooms</h1>
+  {% if request.user.tenantprofile.has_paid == True %}
+    <div style="display: flex; align-items: center; justify-content: space-evenly; width: 99%; height: 150px; margin: 2px; border: darkslateblue; border-radius: 7px">
+      <div style="background-color: lavender; width: 20%; height: 100px; border-right: beige; border-radius: 7px;">
+          <h4 style='text-align: center; color: indigo;'>Total No. of Rooms</h4>
+          {% if rooms %}
+            <h1 style='text-align: center; color: indigo;'>{{ total }}</h1>
+          {% endif %}
+      </div>
+      <div style="background-color: lavender; width: 20%; height: 100px; border-left: 2px darkslateblue; border-radius: 7px">
+          <h4 style="text-align: center; color: indigo;">Available Rooms</h4>
+          {% if rooms %}
+            <h1 style="text-align: center; color: indigo;">{{ available }}</h1>
+          {% endif %}
+      </div>
+      <div style="background-color: lightgrey; width: 30%; height: 150px;" class="float-end">
+          <canvas id="roompagedoughnut"></canvas>
+      </div>
+    </div>
+  {% endif %}
+  <hr>
+  {% if room_page %}
+      <div>
+          <form action="" method="get" style="color: indigo;">
+              <div style="display: flex; align-items: center; justify-content: space-evenly">
+                  <div>
+                      {% render_field rooms.form.name type="input" placeholder="Name" class="form-control" %}
+                  </div>
+                  <div>
+                      {% render_field rooms.form.total_spaces type="input" placeholder="Total Spaces" class="form-control" %}
+                  </div>
+                   <div>
+                      {% render_field rooms.form.available_spaces type="input" placeholder="Available Spaces" class="form-control" %}
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: center">
+                      {{ rooms.form.sex|add_label_class:"form-label" }}&nbsp;
+                      {% render_field rooms.form.sex type="select"  class="form-select" %}
+                  </div>
+                <button type="submit" class="btn btn-outline-secondary">Search</button>
+              </div>
+          </form>
+    </div>
+      <br>
+    {% if request.user.tenantprofile.has_paid == True %}
+      <span class="tenant-doc-tt" data-bs-placement="top"
+            data-bs-title="Create">
+        <a style="margin-bottom: 5px" href="{% url 'room-create'%}" type="button" class="btn btn-outline-success"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+            </svg>
+        </a>
+      </span>
+    {% endif %}
+  <div style="display: flex; align-items: start; justify-content: space-evenly;">
+    <div style="width: 100%; max-width: 100%;">
+      <table class="table table-borderless table-hover table-secondary">
+        <thead>
+          <tr>
+            <th style="color: indigo;" scope="col">#</th>
+            <th style="color: indigo;" scope="col">name</th>
+            <th style="color: indigo;" scope="col">Spaces</th>
+            <th style="color: indigo;" scope="col">Sex</th>
+            <th style="color: indigo;" scope="col">View</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          {% for room in room_page %}
+            {% if room.available_spaces >= 1 %}
+              <tr>
+                <th style="color: indigo;" scope="row">{{forloop.counter}}</th>
+                <td style="color: indigo;">{{room.name}}({{ .sex }})</td>
+                <td style="color: indigo;">{{ room.available_spaces }}/{{room.total_spaces}}</td>
+                <td style="color: indigo;">{{room.sex}}</td>
+                {% if request.user.tenantprofile.has_paid == True %}
+                  <td><button style="border: none; border-radius: 7px; color: indigo;" hx-get="{% url 'bedroom-detail' room.id %}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+                {% else %}
+                  <td><button style="border: none; border-radius: 7px; color: indigo;">Subscribe</button></td>
+                {% endif %}
+              </tr>
+            {% else %}
+            <tr>
+              <th style="color: red;" scope="row">{{forloop.counter}}</th>
+              <td style="color: red;">{{room.name}}({{ room.sex }})</td>
+              <td style="color: red;">{{ room.available_spaces }}/{{room.total_spaces}}</td>
+              <td style="color: red;">{{room.sex}}</td>
+              {% if request.user.tenantprofile.has_paid == True %}
+                <td><button style="border: none; border-radius: 7px; color: red;" hx-get="{% url 'bedroom-detail' room.id %}" hx-target="#t-con" hx-swap="innerHTML" hx-push-url="true">View</button></td>
+              {% else %}
+                <td><button style="border: none; border-radius: 7px; color: red;">Subscribe</button></td>
+              {% endif %}
+            </tr>
+            {% endif %}
+          {% endfor %}
+         
+        </tbody>
+      </table>
+        {% if room_page.has_previous %}
+          <a class="btn btn-outline-secondary mb-4" href="?page=1">First</a>&nbsp;
+        {% endif %}
+        {% for num in room_page.paginator.page_range %}
+            {% if room_page.number == num %}
+                <a class="btn btn-secondary mb-4" href="?page={{ num }}">{{ num }}</a>&nbsp;
+            {% elif num > room_page.number|add:'-3' and num < room_page.number|add:'3' %}
+                <a class="btn btn-outline-secondary mb-4" href="?page={{ num }}">{{ num }}</a>&nbsp;
+            {% endif %}
+        {% endfor %}
+    </div>
+  </div>
+  {% else %}
+    <div style="display: flex; align-items: center; justify-content: center;">
+      <h3 style="margin-right: 20px;">No Rooms Created</h3>
+      <a href="{% url 'room-create'%}" type="button" class="btn btn-secondary">Create Room</a>
+    </div>
+      
+  {% endif %}
+</div>
+    <script>
+      const rpdn = document.getElementById('roompagedoughnut');
+          new Chart(rpdn, {
+            type: 'doughnut',
+            data: {
+              labels: ['Male Rooms', 'Female Rooms'],
+              datasets: [{
+                label: 'Total No. of Rooms',
+                data: [{{ male_rooms }}, {{ female_rooms }}],
+                backgroundColor: [
+                  'indigo',
+                  'gray',
+                ],
+                hoverOffset: 4,
+                borderColor: 'lightgrey',
+                borderRadius: 5,
+                rotation: 5
+              }]
+            },
+          });
+    </script>
+
+{% endblock content %}

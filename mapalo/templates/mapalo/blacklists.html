@@ -1,0 +1,38 @@
+{% extends 'mapalo/base.html'%}
+{% load static %}
+{% block head_title %}
+    Sophans Blacklist
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="background-color: rgb(104, 87, 116);">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%; min-height: 100px; max-height: 100px;">
+            <h1 style="text-align: center; color: aliceblue;;">Blacklist's</h1>
+        </div>
+        
+        {% if blacklists %}
+            <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;
+            width: 100%; height: auto;">
+                {% for tenant in blacklists %}
+                <div style="width: 350px; min-height: 500px; max-height: 500px; max-width: 100%;">
+                    <div class="card" style="background-color: whitesmoke; margin-top: 20px; margin-bottom: 20px; border-radius: 15px;">
+                        <img style="border-radius: 15px 15px 0 0;" src="{{ tenant.image.url}}" class="card-img-top" alt="tenant image">
+                        <div class="card-body">
+                        <h5 style="color: indigo;" class="card-title">{{ tenant.name}}</h5>
+                        <p style="color: indigo;" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        {% if request.user.is_authenticated and request.user == tenant.user%}
+                            <div style="display: flex; align-items: center; justify-content: space-between;">
+                                <a href="{% url 'blacklist-update' tenant.id %}" class="btn btn-secondary">Edit</a>
+                                <a href="{% url 'blacklist-delete' tenant.id %}" class="btn btn-danger">Delete</a>
+                            </div>
+                        {% endif %}
+                        <p style="text-align: center;" class="card-text">{{tenant.user.profile.business_name}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        {% else %}
+            <h1>Blacklisted Tenants are shown here</h1>
+        {% endif%}
+    </div>
+{% endblock content %}

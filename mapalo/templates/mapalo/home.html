@@ -1,0 +1,332 @@
+{% extends 'mapalo/h-base.html'%}
+{% load static %}
+{% block head_title %}
+    Sophans
+{% endblock %}
+{% block content %}
+    <div class="container-fluid" style="display: flex; flex-direction: column; min-height: 100vh;">
+        <div class="home-home" style="width: 100%; max-width: 100%; height: 600px;">
+            <div style="display: flex; align-items: center;justify-content: center; width: 100%; max-width: 100%; height: 300px;">
+                <h1 class="home-title">Sophans</h1>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center">
+                {% if request.user.is_authenticated %}
+                    <div>
+                        <a class="get-started-link" style="text-decoration: none" href="{% url 'public-profile' %}">Home</a>
+                    </div>
+                {% else %}
+                    <div>
+                        <a class="get-started-link" style="text-decoration: none" href="{% url 'public-signup' %}">Get Started</a>
+                    </div>
+                {% endif %}
+            </div>
+            <div style="width: 100%; height: 300px;" class="mt-5">
+                <h2 class="home-subtitle">
+                    Manage Tenants Easily, Securely,<br> Efficiently all in One Place
+                </h2>
+            </div>
+        </div>
+        {% for image in sophans_images %}
+            <div id="home-img" style="width: 100%; max-width: 100%; height: 700px; margin-bottom: 10px; border-radius: 5px;">
+                <div style="display: flex; align-items: start; justify-content: center">
+                    <img style="width: 100%; max-width: 100%; height: 700px; border-radius: 10px;" src="{{ image.dashboard_image.url }}" alt="" srcset="">
+                </div>
+            </div>
+            <!-- Features -->
+            <div style="width: 100%; height: auto; margin-bottom: 20px;">
+                <div style="width: 100%; height: 500px; text-align: center; background-color: indigo; display: flex;
+                    align-items: center; justify-content: center; color: whitesmoke; border-radius: 10px; margin-bottom: 50px;">
+                    <div>
+                        <H1 style="margin-bottom: 20px; font-size: 50px;">Sophans Features</H1>
+                        <p style="font-size: 25px; margin-bottom: 20px;">Sophans Featues Makes it easy to Manage your Boarding House, Hotel, Lodge etc. <br> 
+                            Say goodbye to manual management of Tenants</p>
+                        <h3>"Let Sophans Manage Your Tenants"</h3>
+                    </div>
+                </div>
+                <!-- Features List -->
+                <div style="display: flex; align-items: center; justify-content: space-evenly; width: 100%; height: 300px;">
+                    <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                        <span class="feature-btn" style="width: 100%;">Manage <br> Tenants</span>
+                    </div>
+                    <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                        <span class="feature-btn" style="width: 100%;">Automatic <br>Reminders</span>
+                    </div>
+                    <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                        <span class="feature-btn" style="width: 100%;">Organise <br> Rooms/Spaces</span>
+                    </div>
+                    <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                        <span class="feature-btn" style="width: 100%;">Monitor <br> Payments</span>
+                    </div>
+                    <div class="Feature-item" style="text-align: center; width: 19%; height: auto; border: 1px indigo solid; border: none; border-radius: 10px; padding: 5px;">
+                        <span class="feature-btn" style="width: 100%;">Blacklist <br> Tenants</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Features info -->
+            <div id="features" style="width: 100%; height: auto;">
+                <div style="width: 100%; min-height: 550px; max-height: 900px; border-radius: 10px; margin-bottom: 100px;">
+                    <h1 style="text-align: center; color: indigo; margin-bottom: 15px; margin-top: 50px;">Management</h1>
+                    <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                        <div style="width: 700px; max-width: 100%; min-height: 457px; max-height: 500px; object-fit: cover; border-radius: 10px; margin-right: 10px;">
+                            <img style="width: 100%; max-width: 100%; height: 500px; border-radius: 13px;" src="{{image.management_image.url }}" alt="" srcset="">
+                        </div>
+                        <div style="width: 500px; max-width: 100%; height: 457px;">
+                            <ul style="font-size: 25px; padding: 20px;">
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="20" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Sophans takes the hassle of always adding the<br>&nbsp;&nbsp;same tenant over and over whenever they pay.</li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Know exactly who has paid and who has not.</li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Send messages/reminders to all tenants at once.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; min-height: 550px; max-height: 900px; border-radius: 10px; margin-bottom: 100px;">
+                    <h1 style="text-align: center; color: indigo; margin-bottom: 15px; margin-top: 50px;">Automatic Reminders</h1>
+                    <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                        <div style="width: 700px; max-width: 100%; min-height: 457px; max-height: 500px; object-fit: cover; border-radius: 10px; margin-right: 10px;">
+                            <img style="width: 100%; max-width: 100%; height: 500px; border-radius: 13px;" src="{{image.reminders_image.url }}" alt="" srcset="">
+                        </div>
+                        <div style="width: 500px; max-width: 100%; height: 457px;">
+                            <ul style="font-size: 25px; padding: 20px;">
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Sophans Sends Automatic welcome messages to<br>&nbsp;&nbsp;new tenants.</li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Payment due reminders are handled by Sophans.</li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Sophans also sends thank you messages to<br>&nbsp;&nbsp;tenants for paying rentors (just to be nice)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; min-height: 550px; max-height: 900px; border-radius: 10px; margin-bottom: 100px;">
+                    <h1 style="text-align: center; color: indigo; margin-bottom: 15px; margin-top: 50px;">Rooms/Spaces Organization</h1>
+                    <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                        <div style="width: 700px; max-width: 100%; min-height: 457px; max-height: 500px; object-fit: cover; border-radius: 10px; margin-right: 10px;">
+                            <img style="width: 100%; max-width: 100%; height: 500px; border-radius: 13px;" src="{{image.rooms_image.url }}" alt="" srcset="">
+                        </div>
+                        <div style="width: 500px; max-width: 100%; height: 457px;">
+                            <ul style="font-size: 25px; padding: 20px;">
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Keep track of which tenants are exactly in which<br>&nbsp;&nbsp;room</li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>See which rooms/spaces are for men or women</li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Monitor which rooms or space are occupied or<br>&nbsp;&nbsp;available from one place.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 100%; min-height: 550px; max-height: 900px;  border-radius: 10px; margin-bottom: 100px;">
+                    <h1 style="text-align: center; color: indigo; margin-bottom: 15px; margin-top: 50px;">Payment Monitoring</h1>
+                    <div style="display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                        <div style="width: 700px; max-width: 100%; min-height: 457px; max-height: 500px; object-fit: cover; border-radius: 10px; margin-right: 10px;">
+                            <img style="width: 100%; max-width: 100%; height: 500px; border-radius: 13px;" src="{{image.payment_image.url }}" alt="" srcset="">
+                        </div>
+                        <div style="width: 500px; max-width: 100%; height: 457px;">
+                            <ul style="font-size: 25px; padding: 20px;">
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Monitor tenant payments from one place.
+                                </li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Dedicated payments view for each tenant.
+                                </li>
+                                <li class="feature-list"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-dash" viewBox="0 0 16 16">
+                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8"/>
+                                </svg>Observe the number of payments each tenant<br>&nbsp;&nbsp;has made.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="width: 100%; height: 550px; border-radius: 10px; margin-bottom: 30px;">
+                    <div style="display: flex; ">
+                        <div style="width: 100%;">
+                            <h1 style="text-align: center; color: indigo;">Tenant Blacklisting</h1>
+                            <ul style="font-size: 25px; padding: 20px; text-align: center;">
+                                <li class="feature-list">
+                                    Sophans gives you the abiiity to blacklist misbehaving tenants and alert other Sophans landlords
+                                </li>
+                            </ul>
+                            <p style="text-align: center; color: indigo; font-size: 20px;">*Disclaimer: Sophans will not be held accountable in any legal issue. <br>
+                            landlords must have proof of any kind of misbehaving before blacklisting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Features End -->
+        {% endfor %}
+         
+         <!-- Pricing -->
+         <div id="pricing" style="width: 100%; max-width: 100%; height: auto;">
+            <h1 style="text-align: center; color: indigo; margin-bottom: 30px;">Pricing</h1>
+            <div style="width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                {% if plans %}
+                    {% for plan in plans %}
+                        {% if plan.name == "Monthly Plan" %}
+                            <div class="plan1">
+                                <h4 style="margin-top: 20px;">{{plan.name}}</h4>
+                                <div>
+                                    <ul style="list-style: none; text-align: start; font-size: 22px; line-height: 30px; color: rgba(76, 0, 130, 0.795);">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_1}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_2}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_3}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_4}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_5}}</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <span style="display: flex; align-items: center; justify-content: center; margin-top: 50px;"><h1>K{{plan.price}}</h1><h6>/month</h6></span>
+                                </div>
+                                <div style="width: 100%; height: 150px; margin-top: 90px;">
+                                    <form action="#" method="post">
+                                        {% csrf_token %}
+                                    <!-- Change the value below to the ID of the plan you wish to offer (monthly, five-month, or yearly) -->
+                                        <input type="hidden" name="plan_id" value="YOUR_PLAN_ID_HERE">
+                                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                            <a href="{% url 'plan-details' plan.id %}" type="submit" class="btn btn-outline-dark paypal-btn">Subscribe</a>
+                                        </div>
+                                    </form>
+                                    <p style="margin-top: 20px; text-align: center; color: indigo; margin-bottom: 16px;">Terms & Conditions Apply</p>
+                                </div>
+                            </div>
+                        {% elif plan.name == "Five(5) Months Plan"%}
+                        <div class="plan1">
+                            <h4 style="margin-top: 20px;">{{plan.name}}</h4>
+                            <div>
+                                <ul style="list-style: none; text-align: start; font-size: 22px; line-height: 30px; color: rgba(76, 0, 130, 0.795);">
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_1}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_2}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_3}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_4}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_5}}</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span style="display: flex; align-items: center; justify-content: center; margin-top: 50px;"><h1>K{{plan.price}}</h1><h6>/month</h6></span>
+                                <p style="text-align: center; color: rgba(76, 0, 130, 0.747); font-size: 19px;"><small>Note: Pay K1,990 after the month trial, next payment will be after five months</small></p>
+                            </div>
+                            <div style="width: 100%; height: 150px; margin-top: 60px;">
+                                <form action="#" method="post">
+                                    {% csrf_token %}
+                                <!-- Change the value below to the ID of the plan you wish to offer (monthly, five-month, or yearly) -->
+                                    <input type="hidden" name="plan_id" value="YOUR_PLAN_ID_HERE">
+                                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                        <a href="{% url 'plan-details' plan.id %}" type="submit" class="btn btn-outline-dark paypal-btn">Subscribe</a>
+                                    </div>
+                                </form>
+                                <p style="margin-top: 20px; text-align: center; color: indigo;">Terms & Conditions Apply</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="plan1">
+                            <h4 style="margin-top: 20px;">{{plan.name}}</h4>
+                            <div>
+                                <ul style="list-style: none; text-align: start; font-size: 22px; line-height: 30px; color: rgba(76, 0, 130, 0.795);">
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_1}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_2}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_3}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_4}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_5}}</li>
+                                </ul>
+                            </div>
+                            <div style="margin-top: 10px; height: 100px; color: indigo;">
+                                <span style="display: flex; align-items: center; justify-content: center; margin-top: 50px;"><h1>K{{plan.price}}</h1><h6>/month</h6></span>
+                                <p style="text-align: center; color: rgba(76, 0, 130, 0.747); font-size: 19px;"><small>Note: Pay K3,500 after the month trial, next payment will be after a year</small></p>
+                            </div>
+                            <div style="width: 100%; height: 150px; margin-top: 50px;">
+                                <form action="#" method="post">
+                                    {% csrf_token %}
+                                <!-- Change the value below to the ID of the plan you wish to offer (monthly, five-month, or yearly) -->
+                                    <input type="hidden" name="plan_id" value="YOUR_PLAN_ID_HERE">
+                                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                        <a href="{% url 'plan-details' plan.id %}" type="submit" class="btn btn-outline-dark paypal-btn">Subscribe</a>
+                                    </div>
+                                </form>
+                                <p style="margin-top: 20px; text-align: center; color: indigo;">Terms & Conditions Apply</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+         </div>
+        <!-- Princing End -->
+        <div id="foot-data" style="width: 100%; height: auto; margin-bottom: 10px; border-radius: 5px;">
+            <div style="width: 100%; max-width: 100%; height: auto; background-color: rgba(173, 170, 170, 0.699); color: indigo; border-radius: 8px 8px 0 0; display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                <div style="min-height: 150px; width: 200px; max-width: 100%; max-height: 150px; margin-top: 12px;">
+                    <a class="home-footer-link" href="{% url 'about-sophans' %}">About Us</a>
+                    <ul style="list-style-type: none;">
+                        <li class="home-footer"><a class="home-footer-link" href="{% url 'sophans-terms' %}">Legal Policy</a></li>
+                        <li class="home-footer"><a class="home-footer-link" href="{% url 'sophans-terms' %}">Terms of use</a></li>
+                    </ul>
+                </div>
+                <div style="min-height: 150px; width: 200px; max-width: 200px; max-height: 150px; margin-top: 12px;">
+                    <h5>Contact Us</h5>
+                    <ul style="list-style-type: none;">
+                        <li class="home-footer">sophans.msn@gmail.com</li>
+                        <li class="home-footer">+260764738169</li>
+                        <li class="home-footer">+260776514959</li>
+                        <li class="home-footer">+260956454488</li>
+                    </ul>
+                </div>
+                <div style="min-height: 150px; width: 200px; max-width: 200px; max-height: 150px; margin-top: 12px;">
+                    {% if request.user.is_authenticated %}
+                        <a class="home-footer-link" href="{% url 'public-logout' %}">Log out</a>
+                    {% else %}
+                        <a class="home-footer-link" href="{% url 'public-signup' %}">Sign Up</a><br>
+                        <a class="home-footer-link" href="{% url 'public-login' %}">Log In</a>
+                    {% endif %}
+                </div>
+                <div style="min-height: 150px; width: 200px; max-width: 200px; max-height: 150px; margin-top: 12px;">
+                    <a class="home-footer-link" href="#features">Features</a><br>
+                    <a class="home-footer-link" href="#pricing">Pricing</a>
+                </div>
+        </div>
+    </div>
+
+{% endblock content %}

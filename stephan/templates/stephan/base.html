@@ -1,0 +1,150 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'stephan/main.css'%}">
+    <link rel="stylesheet" href="{% static 'stephan/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>
+        {% block head_title %}
+	        Sophans
+        {% endblock %}
+    </title>
+    <style>
+      body {
+        background-color: lightgrey;
+        font-family: Montserrat;
+      }
+
+      #tenant-create-btn {
+        color: indigo;
+        border: 1px indigo solid;
+        padding: 10px;
+        border-radius: 15px;
+      }
+
+      #tenant-create-btn:hover {
+        background-color: indigo;
+        color: whitesmoke;
+        transition: 0.2s ease-out;
+      }
+
+      #errorlist {
+        list-style-type: none;
+        color: red;
+      }
+
+      .terms-header {
+          color: indigo;
+      }
+
+      .terms-info {
+          font-size: 20px;
+      }
+
+      #warning {
+        display: none;
+        color:  yellow;
+        background-color: grey;
+      }
+
+      .pro-edit-button {
+        border: 2px solid indigo;
+        font-size: 16px;
+        border-radius: 10px;
+        padding: 5px;
+        width: 90px;
+        color: indigo;
+      }
+
+      .pro-edit-button:hover {
+        background-color: indigo;
+        color: aliceblue;
+      }
+
+      #settings-buttons {
+        border: 2px solid indigo;
+        font-size: 16px;
+        border-radius: 10px;
+        padding: 5px;
+        width: 90px;
+        color: indigo;
+      }
+
+      #settings-buttons:hover {
+        background-color: indigo;
+        color: aliceblue;
+      }
+
+      #settings-cancel-buttons {
+        border: 2px solid red;
+        font-size: 16px;
+        border-radius: 10px;
+        padding: 5px;
+        width: 90px;
+        color: red;
+      }
+
+      #settings-cancel-buttons:hover {
+        background-color: red;
+        color: aliceblue;
+      }
+
+      .form-cancel-btn {
+        color: red;
+        text-decoration: none;
+      }
+      .form-confirm-button {
+        border: 1px solid indigo;
+        border-radius: 5px;
+        color: indigo;      
+      }	    
+      .form-confirm-button:hover {
+        background-color: indigo;
+        color: whitesmoke;      
+      }
+	      
+		
+      
+    </style>
+</head>
+<body id="b-con">
+      {% if messages %}
+        {% for message in messages %}
+            <div id="message-timer" class="success success-{{message.tags }} float-center text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+      {% endif %}
+    <p id="warning">Warning: For a Better Experience, Use A Computer(laptop, Desktop) Or A Tablet.</p>
+    {% block content %}
+    {% endblock content %}
+    
+
+
+    <script src="{% static 'stephan/popper.min.js'%}"></script>
+    <script src="{% static 'stephan//bootstrap.min.js'%}"></script>
+    <script src="{% static 'stephan/htmx.min.js'%}" defer></script>
+    <script src="{% static 'stephan/stephan.js'%}"></script>
+    <script src="{% static 'stephan/chartjs/dist/chart.js' %}"></script>
+    <script>
+      function checkScreenResolution() {
+        let warningMessage = document.getElementById("warning");
+
+          if (window.innerWidth < 768) {
+              warningMessage.style.display = "block"; // Show warning for mobile screens
+          } else {
+              warningMessage.style.display = "none"; // Hide warning for larger screens
+          }
+      }
+
+      // Run the function on page load and when the window resizes
+      window.onload = checkScreenResolution;
+      window.onresize = checkScreenResolution;
+    </script>
+</body>
+</html>

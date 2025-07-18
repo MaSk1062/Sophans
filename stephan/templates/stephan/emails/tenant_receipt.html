@@ -1,0 +1,51 @@
+{% extends 'lata/lata_base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+	Messages
+{% endblock %}
+{% block content %}
+	<div class="container-sm container-md container-fluid">
+        <div style="margin-top: 30px; width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: center; margin-bottom: 70px;">
+            <div style="width: 100%; max-width: 100%; height: auto; border-bottom: 5px indigo solid; border-radius: 10px;">
+                <div style="width: 100%; max-width: 100%; height: 100px; background-color: indigo;
+                display: flex; align-items: center; justify-content: center; border-radius: 6px;">
+                    <h1 style="color: aliceblue;">{{object.landlord.tenantprofile.business}}</h1>
+                </div>
+                <div style="text-align: center; color: indigo;">
+                    <p style="font-size: 20px;">{{object.receipt_number}}</p>
+                </div>
+                <div style="width: 100%; max-width: 100%; height: auto; color: indigo;">
+                    <div>
+                        <h3 style="text-align: center; margin-bottom: 20px;">
+                            {{ object.tenant.name}}
+                        </h3>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                            <h5 style="font-size: 20px;">Room:</h5>
+                            <h5 style="font-size: 20px;">{{ object.tenant.bedroom.name}}</h5>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                            <h5 style="font-size: 20px;">Due Date:</h5>
+                            <h5 style="font-size: 20px;">{{object.due_date}}</h5>
+                        </div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 15px;">
+                            <h5 style="font-size: 20px;">Total:</h5>
+                            <h5 style="font-size: 20px;">K{{object.amount}}</h5>
+                        </div>            
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h5>{{object.date_created}}</h5>
+                </div>
+                <div>
+                    <p style="text-align: center;">If you have any questions about this receipt contact {{object.landlord.tenantprofile.contact}}</p>
+                </div>
+                <div>
+                    <p style="text-align: center;">{{object.landlord.tenantprofile.address}}, <br>{{object.landlord.tenantprofile.location}}</p>
+                </div>
+                <div style="margin-top: 30px; text-align: center; margin-bottom: 20px;">
+                    <h3 style="color: indigo;"> &copy;Sophans</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

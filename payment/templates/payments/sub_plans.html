@@ -1,0 +1,136 @@
+{% extends 'mapalo/base.html' %}
+{% block head_title %}
+	Sophans Subscription Plans
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <h1 style='text-align: center; margin-top: 40px; color: indigo;'>Choose a Sophans Subscription Plan
+            <br>
+            And Enjoy All the Benefits
+        </h1>
+
+        <!-- Pricing -->
+         <div id="pricing" style="width: 100%; max-width: 100%; height: auto; margin-top: 30px;">
+            <div style="width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: space-evenly; flex-wrap: wrap;">
+                {% if plans %}
+                    {% for plan in plans %}
+                        {% if plan.name == "Monthly Plan" %}
+                            <div class="plan1">
+                                <h4 style="margin-top: 20px;">{{plan.name}}</h4>
+                                <div>
+                                    <ul style="list-style: none; text-align: start; font-size: 22px; line-height: 30px;">
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_1}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_2}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_3}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_4}}</li>
+                                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                        </svg>&nbsp;{{plan.feature_5}}</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <span style="display: flex; align-items: center; justify-content: center; margin-top: 50px;"><h1>K{{plan.price}}</h1><h6>/month</h6></span>
+                                </div>
+                                <div style="width: 100%; height: 150px; margin-top: 90px;">
+                                    <form action="#" method="post">
+                                        {% csrf_token %}
+                                    <!-- Change the value below to the ID of the plan you wish to offer (monthly, five-month, or yearly) -->
+                                        <input type="hidden" name="plan_id" value="YOUR_PLAN_ID_HERE">
+                                        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                            <a href="{% url 'plan-details' plan.id %}" type="submit" class="btn btn-outline-dark paypal-btn">Subscribe</a>
+                                        </div>
+                                    </form>
+                                    <p style="margin-top: 20px; text-align: center; color: indigo; margin-bottom: 16px;">Terms & Conditions Apply</p>
+                                </div>
+                            </div>
+                        {% elif plan.name == "Five(5) Months Plan"%}
+                        <div class="plan1">
+                            <h4 style="margin-top: 20px;">{{plan.name}}</h4>
+                            <div>
+                                <ul style="list-style: none; text-align: start; font-size: 22px; line-height: 30px;">
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_1}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_2}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_3}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_4}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_5}}</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span style="display: flex; align-items: center; justify-content: center; margin-top: 50px;"><h1>K{{plan.price}}</h1><h6>/month</h6></span>
+                                <p style="text-align: center; color: rgba(0, 0, 0, 0.57)"><small>Note: Pay K1,990 after the month trial, next payment will be after five months</small></p>
+                            </div>
+                            <div style="width: 100%; height: 150px; margin-top: 60px;">
+                                <form action="#" method="post">
+                                    {% csrf_token %}
+                                <!-- Change the value below to the ID of the plan you wish to offer (monthly, five-month, or yearly) -->
+                                    <input type="hidden" name="plan_id" value="YOUR_PLAN_ID_HERE">
+                                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                        <a href="{% url 'plan-details' plan.id %}" type="submit" class="btn btn-outline-dark paypal-btn">Subscribe</a>
+                                    </div>
+                                </form>
+                                <p style="margin-top: 20px; text-align: center; color: indigo;">Terms & Conditions Apply</p>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="plan1">
+                            <h4 style="margin-top: 20px;">{{plan.name}}</h4>
+                            <div>
+                                <ul style="list-style: none; text-align: start; font-size: 22px; line-height: 30px;">
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_1}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_2}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_3}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_4}}</li>
+                                    <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="indigo" class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                                    </svg>&nbsp;{{plan.feature_5}}</li>
+                                </ul>
+                            </div>
+                            <div style="margin-top: 10px; height: 100px; color: indigo;">
+                                <span style="display: flex; align-items: center; justify-content: center; margin-top: 50px;"><h1>K{{plan.price}}</h1><h6>/month</h6></span>
+                                <p style="text-align: center; color: rgba(0, 0, 0, 0.57)"><small>Note: Pay K3,500 after the month trial, next payment will be after a year</small></p>
+                            </div>
+                            <div style="width: 100%; height: 150px; margin-top: 50px;">
+                                <form action="#" method="post">
+                                    {% csrf_token %}
+                                <!-- Change the value below to the ID of the plan you wish to offer (monthly, five-month, or yearly) -->
+                                    <input type="hidden" name="plan_id" value="YOUR_PLAN_ID_HERE">
+                                    <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                        <a href="{% url 'plan-details' plan.id %}" type="submit" class="btn btn-outline-dark paypal-btn">Subscribe</a>
+                                    </div>
+                                </form>
+                                <p style="margin-top: 20px; text-align: center; color: indigo;">Terms & Conditions Apply</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+         </div>
+    </div>
+{% endblock content %}

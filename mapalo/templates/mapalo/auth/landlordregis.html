@@ -1,0 +1,22 @@
+{% extends 'mapalo/auth/auth_base.html' %}
+{% block head_title %}
+	Sophans Signup
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%; height: auto; margin-bottom: 15px;">
+            <div style="width: 100%; max-width: 100%; padding: 2rem; margin-top: 1rem; margin-bottom: 1rem;">
+                <form method="post">
+                    {% csrf_token %}
+                    <legend>Sign Up</legend>
+                    {{form|crispy}}
+                    <button style="border: none; border-radius: 7px; color: purple; font-size: 20px; background-color: rgba(128,0,128,0.18); text-align: center" type="submit">Sign Up</button>
+                </form>
+                <p class="text-center" style="margin-top: 15px">
+                    Already Have an Account? <a style="color: darkcyan" href="{% url 'public-login' %}">Login</a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

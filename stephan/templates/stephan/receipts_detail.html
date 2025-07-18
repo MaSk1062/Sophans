@@ -1,0 +1,49 @@
+{% extends 'stephan/index.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+	{{ object.landlord.tenantprofile.business}} Receipts
+{% endblock %}
+{% block content %}
+	<div class="container">
+        <span>
+            <a href="{{request.META.HTTP_REFERER}}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="indigo" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
+              </svg>
+            </a>
+        </span>
+        <div style="margin-top: 30px; width: 100%; max-width: 100%; height: auto; display: flex; align-items: center; justify-content: center; margin-bottom: 70px;">
+            <div style="width: 30%; max-width: 100%; height: auto; border-bottom: 5px indigo solid; border-radius: 10px;">
+                <div style="width: 100%; max-width: 100%; height: 100px; background-color: rgba(88, 2, 150, 0.404);
+                display: flex; align-items: center; justify-content: center; border-radius: 6px;">
+                    <h1 style="text-align: center; color: aliceblue;">{{object.landlord.tenantprofile.business}}</h1>
+                </div>
+                <div style="text-align: center; color: indigo;">
+                    <p>{{object.receipt_number}}</p>
+                </div>
+                <div style="width: 100%; max-width: 100%; height: auto; color: indigo;">
+                    <div>
+                        <h4 style="text-align: center; margin-bottom: 20px;">
+                            {{ object.tenant.name}}
+                        </h4>
+                        <h5 style="margin-bottom: 20px;">Room: <span class="float-end">{{ object.tenant.bedroom.name}}</span></h5>
+                        <h5 style="margin-bottom: 20px;">Due Date: <span class="float-end">{{object.due_date}}</span></h5>
+                        <h5 style="margin-bottom: 20px;">Total: <span class="float-end">K{{object.amount}}</span></h5>
+                    </div>
+                </div>
+                <div style="text-align: center;">
+                    <h5>{{object.date_created}}</h5>
+                </div>
+                <div>
+                    <p style="text-align: center;">If you have any questions about this receipt contact {{object.landlord.tenantprofile.contact}}</p>
+                </div>
+                <div>
+                    <p style="text-align: center;">{{object.landlord.tenantprofile.address}}, <br>{{object.landlord.tenantprofile.location}}</p>
+                </div>
+                <div style="margin-top: 30px; text-align: center; margin-bottom: 20px;">
+                    <h3> &copy;Sophans</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

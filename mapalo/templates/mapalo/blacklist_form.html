@@ -1,0 +1,24 @@
+{% extends 'mapalo/auth/auth_base.html' %}
+{% block head_title %}
+	Blacklist Tenant
+{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+            <div style="width: 100%; max-width: 100%; padding: 2rem; margin-top: 1rem; margin-bottom: 1rem;">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <legend>Blacklist Tenant</legend>
+                    {{blacklist_form|crispy}}
+                    <button style="border: none; border-radius: 7px; color: aliceblue; font-size: 20px; background-color:black; text-align: center" type="submit">Blacklist</button>
+                </form>
+            </div>
+        </div>
+        <div style="width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <h5 style="text-align: center; color: rgba(76, 0, 130, 0.685); margin-bottom: 30px;">Note:<br>Sophans will not be held accountable in any legal issue. <br>
+            landlords must have proof of any kind of misbehaving before blacklisting.</h5>
+            <h6 style="text-align: center; color: rgba(255, 0, 0, 0.678);">Sophans will delete Blacklisted Tenants if you ignore the above stated rule</h6>
+        </div>
+    </div>
+{% endblock content %}

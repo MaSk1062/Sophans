@@ -1,0 +1,6 @@
+@media only screen and (max-width: 400px) {
+    .message-user {
+      font-size: 15px;
+      background-color: red;
+    }
+  }

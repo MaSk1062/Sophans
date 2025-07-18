@@ -1,0 +1,55 @@
+{% extends 'lata/lata_base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}
+	Messages
+{% endblock %}
+{% block content %}
+	<div class="container">
+        <div style="margin-top: 30px; width: 100%; max-width: 100%; height: auto;">
+            <div>
+                <div style="width: 100%; height: 100px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+                    <div style="background-color: indigo; border-radius: 10px; color: aliceblue; width: 100%; height: 100px; display: flex; align-items: center; justify-content: center;">
+                        <h1>Hello <b>{{name}}</b></h1>
+                    </div>
+                </div>
+                <div style="margin-bottom: 30px;">
+                    <p style="font-size: 30px;">
+                        Welcome to Sophans and thank you for registering, <br> I hope Sophans helps you manage tenants with easily, efficiently and effortlessly. <br>
+                    </p>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center; width: 100%;">
+                    <p style="width: 400px; text-align: center; font-size: 20px; border-top: 2px indigo solid; border-bottom: 2px indigo solid; border-radius: 10px;">Some Sophans Features</p>
+                </div>
+                <div style="width: 100%; max-width: 100%; height: 500px; padding: 10px; color: indigo;">
+                    <div style="width: 100%; max-width: 100%; height: 200px; border-bottom: 2px indigo solid; border-radius: 10px; 
+                    display: flex; align-items: center; justify-content: center;">
+                        <div>
+                            <h1 style="margin-bottom: 15px;">Issue receipts to Tenants</h1>
+                            <p style="font-size: 20px;">Say goodbye to printing hard copy receipts, sophans automatically creates and sends receipts to your tenants for you.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </div>
+                    </div>
+                    <div style="width: 100%; max-width: 100%; height: 200px; border-bottom: 2px indigo solid; border-radius: 10px; 
+                    display: flex; align-items: center; justify-content: center; margin-top: 15px;">
+                        <div>
+                            <h1 style="margin-bottom: 15px; margin-left: 10px;">Download documents lists of Tenants, Payments and Receipts either in PDF form or Excel</h1>
+                            <p style="font-size: 20px; margin-left: 10px;">Backup and store your lists of Tenants, Payments and Receipts offline without needing to print.</p>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <div>
+                        <p style="font-size: 25px; color: indigo;">
+                            Once again, Thank You for becoming a valuable Customer. <br>
+                            Need any help? contact us on +260776514959 <br>
+                            Or Email us at sophans.msn@gmail.com. <br>
+                            Mapalo S Nguso.
+                        </p>
+                    </div>
+                </div>   
+            </div>
+            <div style="margin-top: 50px; display: flex; align-items: center; justify-content: center;">
+                <h1 style="color: indigo;"> &copy;Sophans</h1>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
